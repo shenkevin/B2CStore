@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 字体大小 ，系统默认值 -->
+    <dimen name="text_size_extra_micro">10sp</dimen>
+    <dimen name="text_size_micro">12sp</dimen>
+    <dimen name="text_size_micro1">12sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_small_ultra">10sp</dimen>
+    <dimen name="text_size_small_medium">14sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_medium1">18sp</dimen>
+    <dimen name="text_size_big_large">22sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="Text_Size_Pixel_21">14.0sp</dimen>
+
+    <!-- 间距值 -->
+    <dimen name="space_micro">2dp</dimen>
+    <dimen name="space_less_small">4dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_medium">16dp</dimen>
+    <dimen name="space_medium1">24dp</dimen>
+    <dimen name="space_large">32dp</dimen>
+    <dimen name="space_large_aaaa">40dp</dimen>
+    <dimen name="space_extra_large">48dp</dimen>
+    <dimen name="space_extra_large_pwd">66dp</dimen>
+    <dimen name="space_extra_large_pwdpwd">73dp</dimen>
+    
+    
+    <!-- 引导页小圆点的内边距 -->
+    <dimen name="dot_padding">15.0dp</dimen>
+    <!-- 首頁底部字體大小 -->
+    <dimen name="home_bottom_textSize">11sp</dimen>
+    <!-- 标题高度 -->
+    <dimen name="title_height">50dp</dimen>
+    <!--标题字体大小  -->
+    <dimen name="title_size">16sp</dimen>
+    <!-- banner高度 -->
+    <dimen name="banner_height">175dp</dimen>
+    <!-- 首页 各模块间的间距 -->
+    <dimen name="home_mod_space">5dp</dimen>
+	
+    <!-- 更多页的选项卡高度 -->
+    <dimen name="more_tab_height">48dip</dimen>
+    
+    <!-- 详情页的边距 -->
+    <dimen name="details_space">10dip</dimen>
+    
+</resources>

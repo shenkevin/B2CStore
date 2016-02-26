@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_background"
+    android:orientation="vertical"
+    >
+
+
+    <cn.mstar.store.customviews.OverscrollView2
+        android:layout_below="@+id/the_title_layout"
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        tools:ignore="ScrollViewCount" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/login_layout"
+                    android:layout_width="match_parent"
+                    android:onClick="isLogged"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/my_login_bg"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/welcome_qianxi"
+                        android:textColor="@color/white"
+                        android:textSize="25sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dip"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/btn_login"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/login_register_button_bg"
+                            android:contentDescription="@string/app_name"
+                            android:text="@string/login"
+                            android:textColor="@color/white"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:clickable="true"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="5dp"
+                            android:onClick="i_login"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/btn_register"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dip"
+                            android:background="@drawable/login_register_button_bg"
+                            android:text="@string/register"
+                            android:textColor="@color/white"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="5dp"
+                            android:onClick="i_register"
+                            android:clickable="true"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/login_successed_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="isLogged"
+                    android:background="@drawable/my_login_bg"
+                    android:visibility="gone"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dip"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" >
+
+                        <cn.mstar.store.customviews.CircleImageView
+                            android:id="@+id/iv_head"
+                            android:layout_width="80dip"
+                            android:layout_height="80dip"
+                            android:layout_marginLeft="20dip"
+                            android:src="@drawable/logo_down" >
+                        </cn.mstar.store.customviews.CircleImageView>
+
+                        <LinearLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dip"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/tv_logged_username"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="林佳明"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tv_level"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/icon_diamonds"
+                                android:text="钻石会员"
+                                android:textColor="@color/white"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tv_Integral"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="积分:9999"
+                                android:textColor="@color/white"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/change_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dip"
+                            android:layout_marginRight="20dip"
+                            android:padding="10dp"
+                            android:background="@color/transparent"
+                            android:text="修改个人资料 >"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lny_on_login_succeeded"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_weight="100"
+                    android:id="@+id/lny_manage_goods"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:showDividers="middle"
+                    android:dividerPadding="10dp"
+                    android:gravity="center_horizontal"
+                    android:divider="@drawable/goods_manager_divider"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:id="@+id/lny_goods_below_menus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <!-- upoad the data inside
+                            - for the clicks, just put a tag in each of the views, then when we click,
+                            - we could just know which of them we are clicking
+                            // according to the number, just put the value of the margin top.
+                     -->
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </cn.mstar.store.customviews.OverscrollView2>
+
+
+
+     <include layout="@layout/title_layout" />
+
+
+
+
+</RelativeLayout>

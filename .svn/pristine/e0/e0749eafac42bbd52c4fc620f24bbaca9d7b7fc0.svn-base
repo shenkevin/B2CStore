@@ -1,0 +1,559 @@
+package cn.mstar.store.fragment;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.mstar.store.Interface.HttpRequestCallBack;
+import cn.mstar.store.R;
+import cn.mstar.store.activity.ClassifyActivity;
+import cn.mstar.store.activity.ForgetPasswordActivity;
+import cn.mstar.store.activity.LogisticsDetialsActivity;
+import cn.mstar.store.activity.MainActivity;
+import cn.mstar.store.activity.NearStoreActivity;
+import cn.mstar.store.activity.ScanCodeActivity;
+import cn.mstar.store.activity.SearchActivity;
+import cn.mstar.store.app.Constants;
+import cn.mstar.store.app.Constants2;
+import cn.mstar.store.app.MyAction;
+import cn.mstar.store.app.MyApplication;
+import cn.mstar.store.entity.BannerItemData;
+import cn.mstar.store.entity.LogisticsEntity;
+import cn.mstar.store.parse.HomeJsonParse;
+import cn.mstar.store.parse.HomeJsonParse.ParseCallBack;
+import cn.mstar.store.util.CustomToast;
+import cn.mstar.store.util.ImageLoadOptions;
+import cn.mstar.store.util.L;
+import cn.mstar.store.util.NetWorkUtil;
+import cn.mstar.store.util.VolleyRequest;
+import cn.mstar.store.view.JazzyViewPager;
+import cn.mstar.store.view.JazzyViewPager.TransitionEffect;
+import cn.mstar.store.view.OutlineContainer;
+
+public class HomeFragment extends Fragment implements OnClickListener{
+
+	private Context mContext;
+	private WebView webView;
+	private JazzyViewPager mViewPager;
+	private SwipeRefreshLayout swipeRefreshLayout;
+	private MyAdapter BannerAdapter = new MyAdapter();
+	private Handler mHandler;
+	private static final int MSG_CHANGE_PHOTO = 1;
+	private boolean isFirstSetAdapter = true;
+	/** 图片自动切换时间 */
+	private static final int PHOTO_CHANGE_TIME = 3000;
+	private LinearLayout mIndicator;
+	/**
+	 * 装指引的ImageView数组
+	 */
+	private ImageView[] mIndicators;
+	/**
+	 * 装ViewPager中ImageView的数组
+	 */
+	private ImageView[] mImageViews;
+	private List<String> mImageUrls = new ArrayList<String>();
+	private ArrayList<BannerItemData> homeBannerList = new ArrayList<BannerItemData>();
+	//搜索按钮
+	private TextView searchBtn;
+	//定位 扫一扫按钮
+	private ImageButton locationBtn,camerBtn;
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+							 Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		View view = LayoutInflater.from(getActivity()).inflate(
+				R.layout.fragment_home1, null);
+		return view;
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onActivityCreated(savedInstanceState);
+		mContext = getActivity();
+		initView();
+		initData();
+
+
+	}
+
+
+	// 通过网络加载数据
+	private void initData() {
+		// TODO Auto-generated method stub
+		if(NetWorkUtil.isNetworkConnected(getActivity())){
+			VolleyRequest.GetRequest(getActivity(), Constants2.IMAGE_URL,
+					new HttpRequestCallBack() {
+
+						@Override
+						public void onSuccess(JSONObject jsonObj) {
+							// TODO Auto-generated method stub
+							setBannerValueToView(jsonObj);
+							L.d(" --- "+jsonObj);
+						}
+
+						@Override
+						public void onFailure(String failresult) {
+							// TODO Auto-generated method stub
+
+						}
+					});
+		}else{
+
+		}
+	}
+
+	// 解析JSON数据，Banner
+	private void setBannerValueToView(JSONObject myJSONObj) {
+		HomeJsonParse.parseJson(myJSONObj, new ParseCallBack() {
+
+			@Override
+			public void onSuccess(ArrayList<BannerItemData> list, String url) {
+				MyApplication.getInstance();
+				// TODO Auto-generated method stub
+				mImageUrls.clear();
+				for (int i = 0; i < list.size(); i++) {
+					mImageUrls.add(list.get(i).getImageUrl());
+				}
+				setBannerAdapter(list);
+				if (mImageUrls != null && mImageUrls.size() > 0) {
+					reflushView();
+				}
+				setWebViewValue(url);
+			}
+
+
+			@Override
+			public void onFailure(String failresult) {
+
+			}
+		});
+	}
+
+	// 刷新页面
+	private void reflushView() {
+		mIndicators = new ImageView[mImageUrls.size()];
+		mIndicator.removeAllViews();
+		if (mImageUrls.size() <= 1) {
+			mIndicator.setVisibility(View.GONE);
+		} else {
+			mIndicator.setVisibility(View.VISIBLE);
+		}
+		for (int i = 0; i < mIndicators.length; i++) {
+			ImageView imageView = new ImageView(getActivity());
+			LayoutParams params = new LayoutParams(0,
+					LayoutParams.WRAP_CONTENT, 1.0f);
+			if (i != 0) {
+				params.leftMargin = 5;
+			}
+			imageView.setLayoutParams(params);
+			mIndicators[i] = imageView;
+			if (i == 0) {
+				mIndicators[i]
+						.setBackgroundResource(R.drawable.homepage_dot_pitch_on);
+			} else {
+				mIndicators[i].setBackgroundResource(R.drawable.homepage_dot);
+			}
+
+			mIndicator.addView(imageView);
+		}
+
+		mImageViews = new ImageView[mImageUrls.size()];
+
+		for (int i = 0; i < mImageViews.length; i++) {
+			ImageView imageView = new ImageView(getActivity());
+			imageView.setScaleType(ScaleType.FIT_XY);
+			mImageViews[i] = imageView;
+		}
+		if (isFirstSetAdapter) {
+			mViewPager.setAdapter(BannerAdapter);
+			isFirstSetAdapter = false;
+		} else {
+			BannerAdapter.notifyDataSetChanged();
+		}
+		mViewPager.setCurrentItem(0);
+
+	}
+
+	// 把数据适配到Banner
+	private void setBannerAdapter(final ArrayList<BannerItemData> myBannerList) {
+		if (getActivity() == null)
+			return;
+		if (myBannerList != null) {
+
+			// ======= 初始化ViewPager ========
+			mIndicators = new ImageView[myBannerList.size()];
+			if (myBannerList.size() <= 1) {
+				mIndicator.setVisibility(View.GONE);
+			}
+
+			for (int i = 0; i < mIndicators.length; i++) {
+				ImageView imageView = new ImageView(getActivity());
+				LayoutParams params = new LayoutParams(0,
+						LayoutParams.WRAP_CONTENT, 1.0f);
+				if (i != 0) {
+					params.leftMargin = 10;
+				}
+				imageView.setLayoutParams(params);
+				mIndicators[i] = imageView;
+				if (i == 0) {
+					mIndicators[i]
+							.setBackgroundResource(R.drawable.homepage_dot_pitch_on);
+				} else {
+					mIndicators[i]
+							.setBackgroundResource(R.drawable.homepage_dot);
+				}
+				mIndicator.addView(imageView);
+			}
+
+			mImageViews = new ImageView[myBannerList.size()];
+
+			for (int i = 0; i < mImageViews.length; i++) {
+				ImageView imageView = new ImageView(getActivity());
+				imageView.setScaleType(ScaleType.FIT_XY);
+				mImageViews[i] = imageView;
+			}
+			mViewPager.setTransitionEffect(TransitionEffect.Standard);
+			mViewPager.setCurrentItem(0);
+			homeBannerList = myBannerList;
+			mHandler.removeMessages(MSG_CHANGE_PHOTO);
+			mHandler.sendEmptyMessageDelayed(MSG_CHANGE_PHOTO,
+					PHOTO_CHANGE_TIME);
+
+			mViewPager.setAdapter(BannerAdapter);
+			mViewPager.setOnPageChangeListener(new MyPageChangeListener());
+			mViewPager.setOnTouchListener(new OnTouchListener() {
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					// TODO Auto-generated method stub
+
+					if (event.getAction() == MotionEvent.ACTION_DOWN) {
+						swipeRefreshLayout.setEnabled(false);
+					}
+					if (event.getAction() == MotionEvent.ACTION_MOVE) {
+						swipeRefreshLayout.setEnabled(false);
+					}
+					if (event.getAction() == MotionEvent.ACTION_UP) {
+						swipeRefreshLayout.setEnabled(true);
+					}
+					if (myBannerList.size() == 0 || myBannerList.size() == 1)
+						return true;
+					else
+						return false;
+
+				}
+			});
+
+			BannerAdapter.bindData(myBannerList);
+			BannerAdapter.notifyDataSetChanged();
+		}
+	}
+
+	/**
+	 * 当ViewPager中页面的状态发生改变时调用
+	 *
+	 * @author Administrator
+	 *
+	 */
+	private class MyPageChangeListener implements OnPageChangeListener {
+
+		/**
+		 * This method will be invoked when a new page becomes selected.
+		 * position: Position index of the new selected page.
+		 */
+		public void onPageSelected(int position) {
+			setImageBackground(position);
+
+		}
+
+		public void onPageScrollStateChanged(int arg0) {
+
+		}
+
+		public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+		}
+	}
+
+	/**
+	 * 设置选中的tip的背景
+	 *
+	 * @param selectItemsIndex
+	 */
+	private void setImageBackground(int selectItemsIndex) {
+		for (int i = 0; i < mIndicators.length; i++) {
+			if (i == selectItemsIndex) {
+				mIndicators[i]
+						.setBackgroundResource(R.drawable.homepage_dot_pitch_on);
+			} else {
+				mIndicators[i].setBackgroundResource(R.drawable.homepage_dot);
+			}
+		}
+	}
+
+	// 提供给banner的viewpager适配器
+	public class MyAdapter extends PagerAdapter {
+
+		ArrayList<BannerItemData> myBannerList = new ArrayList<BannerItemData>();
+
+		@Override
+		public int getCount() {
+			return myBannerList.size();
+		}
+
+		@Override
+		public boolean isViewFromObject(View view, Object obj) {
+			if (view instanceof OutlineContainer) {
+				return ((OutlineContainer) view).getChildAt(0) == obj;
+			} else {
+				return view == obj;
+			}
+		}
+
+		@Override
+		public void destroyItem(View container, int position, Object object) {
+			((ViewPager) container).removeView(mViewPager
+					.findViewFromObject(position));
+		}
+
+		@Override
+		public Object instantiateItem(View container, int position) {
+			ImageLoader.getInstance().displayImage(
+					myBannerList.get(position).getImageUrl(),
+					mImageViews[position], ImageLoadOptions.getOptions());
+			((ViewPager) container).addView(mImageViews[position], 0);
+			mViewPager.setObjectForPosition(mImageViews[position], position);
+
+			mImageViews[position].setOnClickListener(viewPagerOnClick);
+			mImageViews[position].setTag(position);
+			return mImageViews[position];
+
+		}
+
+		public void bindData(ArrayList<BannerItemData> myBannerList) {
+			this.myBannerList = myBannerList;
+		}
+
+		OnClickListener viewPagerOnClick = new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Log.e("GZB", "viewPagerOnClickm,getTag:" + v.getTag());
+
+				// 0:没有任何动作；1:加载url网页2：进入分类列表3：进入搜索关键字列表4：进入详情页
+				int vID = (Integer) v.getTag();
+				switch (myBannerList.get(vID).getActionKey()) {
+					case 0:
+						break;
+					case 1:
+						gotoShowWebView(myBannerList.get(vID).getUrl());
+						break;
+					case 2:
+						//gotomyProductList(myBannerList.get(vID).getCategoryId());
+						break;
+					case 3:
+						gotomyProductListByKeyword(myBannerList.get(vID)
+								.getKeyword());
+						break;
+					case 4:
+						gotomyProductDetail(myBannerList.get(vID).getProId());
+						break;
+				}
+			}
+		};
+
+	}
+
+	@SuppressLint("SetJavaScriptEnabled")
+	private void initView() {
+
+		webView = (WebView) getView().findViewById(R.id.home_webview);
+		mViewPager = (JazzyViewPager) getView().findViewById(
+				R.id.index_product_images_container);
+		swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(
+				R.id.swipeRefreshLayout);
+		mIndicator = (LinearLayout) getView().findViewById(
+				R.id.index_product_images_indicator);
+
+		searchBtn=(TextView) getView().findViewById(R.id.index_search_button);
+		locationBtn=(ImageButton) getView().findViewById(R.id.index_location_button);
+		camerBtn=(ImageButton) getView().findViewById(R.id.index_camer_button);
+
+		searchBtn.setOnClickListener(this);
+		locationBtn.setOnClickListener(this);
+		camerBtn.setOnClickListener(this);
+
+		// 允许调用JS
+		webView.getSettings().setJavaScriptEnabled(true);
+		// 添加接口，提供本地方法给网页调用
+		webView.addJavascriptInterface(new Object() {
+
+			@JavascriptInterface
+
+			public void gotoProductClass(int categoryId){
+				L.e("...........productId.......");
+				gotomyProductClass(categoryId);
+			}
+			public void gotoProductItem(int categoryId){
+
+			}
+		}, "mstar");
+		// 设置WebViewClient，使之可以自动展开所有内容
+		webView.setWebViewClient(new WebViewClient() {
+
+			@Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+				// TODO Auto-generated method stub
+				view.loadUrl(url);
+				return true;
+			}
+
+		});
+		// 设置下拉刷新监听
+		swipeRefreshLayout.setOnRefreshListener(onRefreshListener);
+
+		// 设置卷内的颜色
+		swipeRefreshLayout.setColorSchemeResources(R.color.little_red,
+				R.color.little_red, R.color.little_red,
+				R.color.little_red);
+
+		// 使用Handler，使viewpage自动播放
+		mHandler = new Handler(getActivity().getMainLooper()) {
+
+			@Override
+			public void handleMessage(Message msg) {
+				// TODO Auto-generated method stub
+				super.handleMessage(msg);
+				switch (msg.what) {
+					case MSG_CHANGE_PHOTO:
+						int index = mViewPager.getCurrentItem();
+						if (index == homeBannerList.size() - 1) {
+							index = -1;
+						}
+						mViewPager.setCurrentItem(index + 1);
+						mHandler.sendEmptyMessageDelayed(MSG_CHANGE_PHOTO,
+								PHOTO_CHANGE_TIME);
+				}
+			}
+
+		};
+	}
+
+	// 下拉刷新监听器
+	OnRefreshListener onRefreshListener = new OnRefreshListener() {
+
+		@Override
+		public void onRefresh() {
+			// TODO Auto-generated method stub
+			// .......操作
+			initData();
+			// 停止刷新动画
+			swipeRefreshLayout.setRefreshing(false);
+		}
+	};
+
+	public void setWebViewValue(String url) {
+		webView.loadUrl(url);
+	}
+
+	public void gotoShowWebView(String url) {
+		// Intent intent = new Intent(getActivity(),
+		// ShowActivityDetailsActivity.class);
+		// intent.putExtra("webUrl", url);
+		// startActivity(intent);
+	}
+
+	public void gotomyProductClass(int categoryId) {
+
+//		L.d("cat::: 1064", ""+categoryId);
+//		if (categoryId != 1064) {
+		Intent intent = new Intent(getActivity(), ClassifyActivity.class);
+		intent.putExtra("categoryId", categoryId + "");
+		intent.setAction(MyAction.mainActivityAction);
+		startActivity(intent);
+		/*} else {
+			((MainActivity) getActivity()).selectItem(MainActivity.TAB_CLASSIFICATION);
+		}*/
+	}
+
+	public void gotomyProductListByKeyword(String keyword) {
+		// Intent intent = new Intent(getActivity(), SearchActivity.class);
+		// intent.putExtra("classify", keyword);
+		// startActivity(intent);
+	}
+
+	public void gotomyProductDetail(int proId) {
+		// Intent intent = new Intent(getActivity(),
+		// ProductDetailActivity.class);
+		// intent.putExtra("productId", proId);
+		// startActivity(intent);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		Intent intent=null;
+		switch (v.getId()) {
+			case R.id.index_search_button://搜索
+				intent=new Intent(mContext,SearchActivity.class);
+				break;
+
+			case R.id.index_location_button://定位
+				intent=new Intent(mContext,LogisticsDetialsActivity.class);
+
+				break;
+			case R.id.index_camer_button://扫描二维码
+				intent=new Intent(mContext,ScanCodeActivity.class);
+				break;
+		}
+		if(intent!=null)
+			startActivity(intent);
+	}
+
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// Check which request we're responding to
+		super.onActivityResult(requestCode, resultCode, data);
+		//		String result = data.getExtras().getString("result");
+		if (requestCode == 11 && data != null) {
+			// tell the main activity to proceed the change.
+			((MainActivity)getActivity()).selectItem(MainActivity.TAB_SHOPPING_CART);
+			((MainActivity)getActivity()).mySelfFragmentNeedUpdate(true);
+		}
+	}
+
+}

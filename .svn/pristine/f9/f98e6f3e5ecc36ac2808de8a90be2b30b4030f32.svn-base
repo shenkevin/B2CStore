@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23"
+
+    defaultConfig {
+        applicationId "cn.mstar.store"
+        minSdkVersion 9
+        targetSdkVersion 22
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    lintOptions {
+        // set to true to turn off analysis progress reporting by lint
+        quiet true
+        // if true, stop the gradle build if errors are found
+        abortOnError true
+        // if true, only report errors
+        ignoreWarnings true
+    }
+
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.android.support:support-v4:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.4'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar:3.1.2'
+    compile files('libs/alipaySDK-20150724.jar')
+    compile files('libs/httpmime-4.1.1.jar')
+}

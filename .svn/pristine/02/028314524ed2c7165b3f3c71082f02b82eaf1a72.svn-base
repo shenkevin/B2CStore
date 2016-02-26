@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.mstar.store"
+    android:versionCode="2"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="22" />
+
+    <!-- 增加访问网络的权限 -->
+
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+
+    <!-- 增加文件存储和访问摄像头的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <application
+        android:name="cn.mstar.store.app.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="A38XqGfHOMcdTLmXg9tXQkQh" />
+
+        <activity
+            android:name="cn.mstar.store.activity.WelcomeActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="cn.mstar.store.activity.MainActivity"
+            android:launchMode="singleTask" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="cn.mstar.store.activity.GuideActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.ProductListActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.ClassifyActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.ProductDetailsActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.SearchActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.NearStoreActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.ScanCodeActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.NavigationActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.ImageBrowserActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.SelectCommodityActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.ConfirmIndentActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.PayActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.CeshiDengluActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.ShippingAddressActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.ManageReceiverAddressActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.CreateReceiverAddressActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.SelectProvinceActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.SelectCityActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.SelectCountyActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.activity.IndentDetailsActivity" >
+        </activity>
+        <activity android:name="cn.mstar.store.ownee.activity.MockActivity" />
+        <activity
+            android:name="cn.mstar.store.ownee.activity.GoodsManagementActivity"
+            android:label="@string/title_activity_goods_management"
+            android:launchMode="singleTask" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+        <activity
+            android:name="cn.mstar.store.ownee.activity.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="cn.mstar.store.ownee.activity.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name="cn.mstar.store.ownee.activity.SelfInformationActivity"
+            android:label="@string/title_activity_self_information" >
+        </activity>
+
+        <receiver
+            android:name="cn.mstar.store.ownee.receiver.SmsBroadcastReceiver"
+            android:exported="false"
+            android:singleUser="true" >
+            <intent-filter android:priority="999" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="cn.mstar.store.ownee.activity.MyFavoriteManagmentActivity"
+            android:label="@string/title_activity_my_favorite_managment"
+            android:parentActivityName="cn.mstar.store.activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cn.mstar.store.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name="cn.mstar.store.ownee.activity.MyShoppingCarActivity"
+            android:label="@string/title_activity_my_shopping_car"
+            android:parentActivityName="cn.mstar.store.activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cn.mstar.store.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name="cn.mstar.store.ownee.activity.ReductionActivity"
+            android:label="@string/reduction_ticket_activity_name"
+            android:parentActivityName="cn.mstar.store.activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cn.mstar.store.activity.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>

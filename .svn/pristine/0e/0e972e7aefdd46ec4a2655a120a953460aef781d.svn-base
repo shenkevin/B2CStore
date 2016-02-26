@@ -1,0 +1,195 @@
+package cn.mstar.store.activity;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import cn.mstar.store.R;
+import cn.mstar.store.activity.BaseActivity.poponDismissListener;
+import cn.mstar.store.app.MyAction;
+import cn.mstar.store.app.MyApplication;
+import cn.mstar.store.entity.Product;
+import cn.mstar.store.entity.ReceiverAddress;
+import cn.mstar.store.util.L;
+import cn.mstar.store.view.PayModePopup;
+import cn.mstar.store.view.PayModePopup.OnDialogListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+/**
+ * 确认订单页
+ * @author wenjundu 2015-7-22
+ *
+ */
+public class ConfirmIndentActivity extends BaseActivity implements OnClickListener,OnDialogListener{
+
+	private ImageView titleBack;//返回按钮
+	private TextView titleName;//标题
+	private LinearLayout addAddressLayout;//添加地址layout
+	private RelativeLayout recieverAddressLayout;//,收货地址layout
+	private TextView  recieverTV,phoneTV,recieverAddressTV;//收货人，电话，收货地址
+	private TextView payModeTV;//支付方式
+	private ImageView productIV;//产品图像
+	private TextView productNameTV,productnormsTV,productPriceTV,productNumTV,showproductNumTV;//产品名称,产品规格,产品价格,产品数量
+	private PayModePopup pop;//选择在线支付 和 货到付款的 pop
+	private String norm="";//传递过来的规格
+	private Product product;//传递过来的产品对象
+	private int productNum;//传递过来的产品数量
+	private TextView totalPriceTV;//总价TV
+	private Button btnConfirm;//确认按钮
+	private ReceiverAddress receiverAddress;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_confirm_indent);
+		MyApplication.getInstance().addActivity(this);
+		initView();
+		initData();
+	}
+
+	private void initData() {
+		// TODO Auto-generated method stub
+		
+		Intent intent=getIntent();
+		if(MyAction.selectCommodityActivityAction.equals(intent.getAction())){//从选择商品跳转过来的
+			
+			String[] norms=intent.getExtras().getStringArray("norms");
+			for(String no: norms){
+				norm+=no;
+			}
+			product=(Product) intent.getExtras().getSerializable("product");
+			productNum=intent.getExtras().getInt("productNum");
+			}
+		if(MyAction.productDetailsActivityAction.equals(intent.getAction())){//从产品详情页跳转过来的
+			norm=intent.getExtras().getString("norm");
+			product=(Product) intent.getExtras().getSerializable("product");
+			productNum=intent.getExtras().getInt("productNum");
+		}
+		productnormsTV.setText(norm);
+		if(product!=null){
+			productPriceTV.setText(getString(R.string.renminbi)+product.getPrice());
+			ImageLoader.getInstance().displayImage(product.getImageUrl(), productIV);
+			productNameTV.setText(product.getName());
+			productNumTV.setText("x"+productNum);
+			showproductNumTV.setText(productNum+"");
+			double total=product.getPrice()*productNum;
+			totalPriceTV.setText(""+total);
+		}
+		
+		
+	}
+	
+	private void getDefualtAdress(){
+		
+		
+		if(receiverAddress==null){
+			
+		}
+	}
+
+	private void initView() {
+		// TODO Auto-generated method stub
+		titleBack=(ImageView) findViewById(R.id.title_back);
+		titleBack.setVisibility(View.VISIBLE);
+		
+		titleName=(TextView) findViewById(R.id.title_name);
+		titleName.setText(getString(R.string.confirm_indent));
+		addAddressLayout=(LinearLayout) findViewById(R.id.add_address_layout);
+		recieverAddressLayout=(RelativeLayout) findViewById(R.id.reciever_address_layout);
+		recieverTV=(TextView) findViewById(R.id.receiver_tv);
+		phoneTV=(TextView) findViewById(R.id.receiver_phone_tv);
+		recieverAddressTV=(TextView) findViewById(R.id.receives_an_address_tv);
+		payModeTV=(TextView) findViewById(R.id.select_pay_mode);
+		productIV=(ImageView) findViewById(R.id.product_img);
+		productNameTV=(TextView) findViewById(R.id.product_name);
+		productnormsTV=(TextView) findViewById(R.id.product_norms);
+		productPriceTV=(TextView) findViewById(R.id.product_price);
+		productNumTV=(TextView) findViewById(R.id.product_number);
+		showproductNumTV=(TextView) findViewById(R.id.btn_commodity_number_display);
+		totalPriceTV=(TextView) findViewById(R.id.tv_total_money);
+		btnConfirm=(Button) findViewById(R.id.btn_confirm_order);
+		btnConfirm.setOnClickListener(this);
+		titleBack.setOnClickListener(this);
+		addAddressLayout.setOnClickListener(this);
+		recieverAddressLayout.setOnClickListener(this);
+		payModeTV.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		Intent intent=null;
+		switch (v.getId()) {
+		case R.id.title_back:
+			finish();
+			break;
+
+		case R.id.select_pay_mode://选中支付方式
+			showPopupWindow();
+			break;
+		case R.id.btn_confirm_order:	//确认订单
+			intent=new Intent(this,PayActivity.class);
+			intent.setAction(MyAction.confirmIndentActivityAction);
+			intent.putExtra("product", product);
+			intent.putExtra("productNum", productNum);
+			intent.putExtra("norm", norm);
+			startActivity(intent);
+			break;
+		case R.id.reciever_address_layout://收货地址
+			 intent=new Intent(this,ShippingAddressActivity.class);
+			 startActivityForResult(intent, 0);
+			 break;
+		}
+	}
+	//显示pop
+	private void showPopupWindow() {
+		// TODO Auto-generated method stub
+		pop=new PayModePopup(this,this);
+		//pop.showAtLocation(payModeTV, Gravity.RIGHT, 0, 0);
+		pop.showAsDropDown(payModeTV);
+		
+	}
+//在线支付
+	@Override
+	public void onlinePay(String text) {
+		// TODO Auto-generated method stub
+		payModeTV.setText(text);
+		if(pop!=null)
+			pop.dismiss();
+	}
+//货到付款
+	@Override
+	public void offlinePay(String text) {
+		// TODO Auto-generated method stub
+		payModeTV.setText(text);
+		if(pop!=null)
+			pop.dismiss();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		
+		if(requestCode==0 && resultCode==RESULT_OK){
+			if(data!=null){
+				receiverAddress=(ReceiverAddress) data.getSerializableExtra("ReceiverAddress");
+		
+			}
+		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		MyApplication.requestQueue.cancelAll(this);
+		super.onDestroy();
+	}
+
+}

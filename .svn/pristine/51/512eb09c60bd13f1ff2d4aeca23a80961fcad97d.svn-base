@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="70dp"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/lny_good_menu_leftside"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_menu_goods_top_icon"
+            android:layout_width="wrap_content"
+            android:src="@drawable/icon_deliver_goods"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_goods_menu_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/maBlack"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="待发货"/>
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/iv_goods_tocheck_number"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:foregroundGravity="center"
+        android:visibility="invisible"
+        android:layout_alignBaseline="@id/lny_good_menu_leftside"
+        android:layout_toRightOf="@+id/lny_good_menu_leftside"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_round"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/tv_number_tocheck"
+            android:layout_width="wrap_content"
+            android:text="-"
+            android:visibility="visible"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+
+</RelativeLayout><!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/layout/me_goods_management_items.xml -->

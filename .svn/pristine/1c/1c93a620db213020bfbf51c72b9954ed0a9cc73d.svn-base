@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include 
+        layout="@layout/title_layout"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/moccasin"
+        android:addStatesFromChildren="true"
+        android:orientation="horizontal" >
+
+        <cn.mstar.store.view.MarqueeText
+            android:id="@+id/tv_location"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/locationing"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_refresh"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:drawableRight="@drawable/ic_refresh"
+            android:paddingRight="10dp" />
+    </LinearLayout>
+    <ListView 
+        android:id="@+id/store_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dip"
+        android:dividerHeight="1px"
+        android:scrollbars="none"
+        ></ListView>
+</LinearLayout>
+<!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/layout/activity_nearby_store.xml -->

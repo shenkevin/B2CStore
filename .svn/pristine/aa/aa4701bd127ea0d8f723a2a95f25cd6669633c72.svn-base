@@ -1,0 +1,559 @@
+package cn.mstar.store.ownee.fragments;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import cn.mstar.store.R;
+import cn.mstar.store.activity.MainActivity;
+import cn.mstar.store.app.MyApplication;
+import cn.mstar.store.ownee.activity.GoodsManagementActivity;
+import cn.mstar.store.ownee.activity.LoginActivity;
+import cn.mstar.store.ownee.activity.MockActivity;
+import cn.mstar.store.ownee.activity.MyFavoriteManagmentActivity;
+import cn.mstar.store.ownee.activity.RegisterActivity;
+import cn.mstar.store.ownee.activity.SelfInformationActivity;
+import cn.mstar.store.ownee.entity.OrdersItem;
+import cn.mstar.store.ownee.entity.UserSelfInfoEntity;
+import cn.mstar.store.ownee.utils.Constants;
+import cn.mstar.store.ownee.utils.NewLink;
+import cn.mstar.store.ownee.utils.Utils;
+import cn.mstar.store.ownee.views.OverscrollView2;
+import cn.mstar.store.util.CustomToast;
+import cn.mstar.store.util.ImageLoadOptions;
+import cn.mstar.store.util.L;
+import cn.mstar.store.util.Util;
+import cn.mstar.store.util.VolleyRequest;
+import cn.mstar.store.util.VolleyRequest.HttpStringRequsetCallBack;
+import cn.mstar.store.view.CircleImageView;
+import cn.mstar.store.view.LoadingDialog;
+
+public class MySelfFragment extends android.support.v4.app.Fragment {
+
+	protected static final int BG_LOGIN_START = 91;
+	protected static final int BG_LOGIN_END = 90;
+	LayoutInflater inflater;
+	Context mContext;
+	private LinearLayout lny_good_menus;
+	private LinearLayout lny_good_below_menus;
+	private LinearLayout lny_afterLog_content;
+	private LinearLayout lny_login_layout, lny_login_succed_layout;
+	private int LIGHT_LINE ,HEAVY_LINE;
+	private View i_login, i_register;
+	private int[] goods_management = new int[]{R.drawable.icon_to_be_paid, R.drawable.icon_deliver_goods, R.drawable.icon_goods_receipt, R.drawable.icon_pick_up};
+	private int[] goods_below_icons = new int[]{R.drawable.icon_order_form, R.drawable.icon_register, R.drawable.icon_order_form, R.drawable.icon_collection, R.drawable.icon_cutepont, R.drawable.icon_shopping_cart};
+	private boolean loggedState = false;
+	private String[] ICON_BOTTOM_TEXT;
+	private String username;
+	private TextView tv_logged_username;
+	private TextView change_info;
+	private View view;
+	private String password;
+	@Bind(R.id.tv_Integral) TextView tv_Integral;
+	@Bind(R.id.scrollview)   OverscrollView2 scrollView;
+	private SystemBarTintManager mStatusBarManager;
+	private View mHeader;
+	@Bind(R.id.title_name) TextView titlebar_title;
+	private String points;
+	private String pic;
+	private MyApplication app;
+	@Bind(R.id.iv_head)  CircleImageView iv_head;
+	private LoadingDialog dialog;
+
+	public static MySelfFragment newInstance(boolean isLogged) {
+		MySelfFragment frg = new MySelfFragment();
+		Bundle args = new Bundle ();
+		args.putBoolean(Constants.IS_LOGGED_LINK, isLogged);
+		frg.setArguments(args);
+		return frg;
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		Bundle args = getArguments();
+		if (args != null) {
+			loggedState = args.getBoolean(Constants.IS_LOGGED_LINK, false);
+		}
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater,
+							 ViewGroup container,  Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		mContext = getActivity();
+		inflater = LayoutInflater.from(mContext);
+		view = inflater.inflate(R.layout.fragment_me, null);
+		ButterKnife.bind(this, view);
+		titlebar_title.setText(getString(R.string.me));
+		scrollView = (OverscrollView2) view.findViewById(R.id.scrollview);
+		updateLoggedState ();
+		return view;
+	}
+
+
+	private void initListeners() {
+		change_info.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				Intent intent = new Intent(getActivity(), SelfInformationActivity.class);
+				startActivityForResult(intent, 3);
+			}
+		});
+	}
+
+	public android.os.Handler mHandler = new android.os.Handler () {
+		public void handleMessage(android.os.Message msg) {
+
+			switch (msg.what) {
+				case BG_LOGIN_START:
+					dialog = new LoadingDialog(getActivity(), getString(R.string.pull_to_refresh_footer_refreshing_label));
+					dialog.show();
+					break;
+				case BG_LOGIN_END:
+					initValues();
+					initOutViews(view);
+					initTopView(loggedState);
+					initGoodsManagement(loggedState);
+					initGoodsBelowMenus(loggedState);
+					initListeners();
+					dialog.cancel();
+					break;
+				default:
+					break;
+			}
+		};
+	};
+
+	private boolean firstTime = true;
+	private int i;
+
+	private void updateLoggedState() {
+
+		// check inside the sharedpreferences
+		// of the application and see what is
+		// wrong.
+		app = (MyApplication) getActivity().getApplication();
+		username = app.username;
+		password = app.password;
+		pic = app.pic;
+		points = app.points;
+
+		// check from the internet if the data are up..
+		if (firstTime) {
+			// then update the view...
+			firstTime = false;
+			initValues();
+			initOutViews(view);
+			initTopView(loggedState);
+			initGoodsManagement(loggedState);
+			initGoodsBelowMenus(loggedState);
+			initListeners();
+		} else {
+		}
+		// if it is the first time, open up a rounded progress
+		// dialog.
+	}
+
+
+	private void initTopView(boolean loggedState) {
+		if (loggedState) {
+			lny_login_layout.setVisibility(View.GONE);
+			lny_login_succed_layout.setVisibility(View.VISIBLE);
+			tv_logged_username.setText(app.username + " , " + getString(R.string.welcome));
+			tv_Integral.setText(getString(R.string.points) + app.points);
+//			iv_head
+			L.d("pic:::", app.pic);
+			ImageLoader.getInstance().displayImage(app.pic, iv_head, ImageLoadOptions.getOptions());
+		} else {
+			lny_login_succed_layout.setVisibility(View.GONE);
+			lny_login_layout.setVisibility(View.VISIBLE);
+			// listen to login and succed buttons.
+			i_register.setOnClickListener(new Login_RegisterOnclickListener());
+			i_login.setOnClickListener(new Login_RegisterOnclickListener());
+		}
+		mStatusBarManager = new SystemBarTintManager(getActivity());
+		mStatusBarManager.setStatusBarTintEnabled(true);
+		mHeader = view.findViewById(R.id.header);
+	}
+
+
+	public boolean getLoggedState() {
+		return loggedState;
+	}
+
+
+	private void setLoggedState(boolean booleanExtra, String username) {
+		loggedState = booleanExtra;
+		// tell the mainactivity to update me
+//		((MainActivity) getActivity()).updateMyselfFrag(booleanExtra, true);
+	}
+
+	private void initValues() {
+
+		LIGHT_LINE  = Utils.convertPxtoDip(1, mContext);
+		HEAVY_LINE = Utils.convertPxtoDip(15, mContext);
+		ICON_BOTTOM_TEXT = getResources().getStringArray(R.array.goods_managment_1);
+	}
+	/*
+	private final int[] ic_id = {R.drawable.icon_order_form, R.drawable.icon_register, R.drawable.icon_collection,
+	R.drawable.ic};*/
+
+	private void initGoodsBelowMenus(boolean loggedState) {
+
+		Class<?> jumpToActivity = null;
+
+		// goods below menus
+		for (int i = 0; i < 2; i++) {
+
+			// inflate it first
+			if (inflater == null)
+				inflater = LayoutInflater.from(mContext);
+			View inf_rel = inflater.inflate(R.layout.me_goods_below_menus, null);
+			// get the views.
+			LinearLayout.LayoutParams params =
+					new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			TextView tv_title = (TextView) inf_rel.findViewById(R.id.tv_menu_title);
+			TextView tv_openning_hint = (TextView) inf_rel.findViewById(R.id.tv_expand_hint);
+			ImageView iv_menu_ic = (ImageView) inf_rel.findViewById(R.id.iv_below_menu_ic);
+			if (!loggedState) {
+				tv_openning_hint.setVisibility(View.INVISIBLE);
+			} else {
+				tv_openning_hint.setVisibility(View.VISIBLE);
+			}
+			switch (i) {
+				case 0:
+					params.topMargin = LIGHT_LINE;
+					tv_title.setText(getResources().getString(R.string.allthegoods));
+					tv_openning_hint.setText(getResources().getString(R.string.allthegoods_hint));
+					iv_menu_ic.setImageResource(goods_below_icons[i]);
+
+					inf_rel.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							Intent intent = new Intent(getActivity(), GoodsManagementActivity.class);
+							startActivity(intent);
+						}
+					});
+					break;
+				case 1:
+					params.topMargin = LIGHT_LINE;
+					tv_title.setText(getResources().getString(R.string.favorites));
+					tv_openning_hint.setText("");
+					iv_menu_ic.setImageResource(goods_below_icons[i]);
+
+					inf_rel.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							Intent intent = new Intent(getActivity(), MyFavoriteManagmentActivity.class);
+							startActivity(intent);
+						}
+					});
+					break;
+			}
+			lny_good_below_menus.addView(inf_rel, params);
+		}
+	}
+
+	private void initOutViews(View view) {
+		i_login = view.findViewById(R.id.btn_login);
+		i_register = view.findViewById(R.id.btn_register);
+		lny_good_menus = (LinearLayout) view.findViewById(R.id.lny_manage_goods);
+		lny_good_below_menus = (LinearLayout) view.findViewById(R.id.lny_goods_below_menus);
+		lny_afterLog_content = (LinearLayout) view.findViewById(R.id.lny_on_login_succeeded);
+		lny_login_layout = (LinearLayout) view.findViewById(R.id.login_layout);
+		lny_login_succed_layout = (LinearLayout) view.findViewById(R.id.login_successed_layout);
+		tv_logged_username = (TextView) view.findViewById(R.id.tv_logged_username);
+		change_info = (TextView) view.findViewById(R.id.change_info);
+	}
+
+	private void initGoodsManagement(boolean loggedState) {
+
+		// get views and upload them to the linearlayout...
+		loggedState = !"".equals(app.tokenKey);
+		for (i = 0; i < 4; i++) {
+
+			// inflate it first
+			if (inflater == null)
+				inflater = LayoutInflater.from(mContext);
+			View inf_rel = inflater.inflate(R.layout.me_goods_management_items, null);
+			inf_rel.setTag((i + 1));
+
+			// get the views.
+			final View iv_goods_tocheck_number = inf_rel.findViewById(R.id.iv_goods_tocheck_number);
+			ImageView iv_top_img = (ImageView) inf_rel.findViewById(R.id.iv_menu_goods_top_icon);
+			final TextView tv_side_numer = (TextView) inf_rel.findViewById(R.id.tv_number_tocheck);
+			TextView tv_bottom = (TextView) inf_rel.findViewById(R.id.tv_goods_menu_option);
+			if (!loggedState) {
+				iv_goods_tocheck_number.setVisibility(View.INVISIBLE);
+			} else {
+
+				//				tv_side_numer.setText(i+3+"");
+				String[] links = new String[]{Constants.ORDER_ALL, Constants.WAIT_PAY, Constants.WAIT_RECEIVE, Constants.WAIT_SEND};
+				VolleyRequest.GetCookieRequest(getActivity(), links[i], new HttpStringRequsetCallBack() {
+
+					@Override
+					public void onSuccess(String result) {
+						// get the number of result...
+
+						try {
+							Gson gson = new Gson();
+							JsonElement elm = gson.fromJson(result, JsonElement.class).getAsJsonObject().get("data");
+							OrdersItem.Prototype tmp = gson.fromJson(elm, OrdersItem.Prototype.class);
+							L.d("XXX ELEM 1 ---- " + tmp.toString());
+							// make a list of what we need from here.
+							if (tmp != null && tmp.list_count != 0) {
+								tv_side_numer.setText(tmp.list_count+"");
+								iv_goods_tocheck_number.setVisibility(View.VISIBLE);
+							} else {
+								iv_goods_tocheck_number.setVisibility(View.INVISIBLE);
+							}
+						} catch  (Exception e){
+							e.printStackTrace();
+							VolleyRequest.manifestNetworkError(getActivity(), "exception");
+						}
+					}
+
+					@Override
+					public void onFail(String error) {
+						tv_side_numer.setVisibility(View.INVISIBLE);
+					}
+				});
+			}
+			iv_top_img.setImageResource(goods_management[i]);
+			tv_bottom.setText(ICON_BOTTOM_TEXT[i]);
+			// i want to put them inside a linearlayout.
+			LinearLayout.LayoutParams layout_params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
+			layout_params.weight = 25;
+			if (loggedState == true)
+				inf_rel.setOnClickListener(new GoodManagmentTopOnclickListener(i+1));
+			else
+				inf_rel.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						loginToServer(GoodsManagementActivity.class);
+					}
+				});
+			lny_good_menus.addView(inf_rel, layout_params);
+		}
+		// how to do with the dividers.
+	}
+
+	private class Login_RegisterOnclickListener implements View.OnClickListener {
+		@Override
+		public void onClick(View v) {
+			if (v == i_login) {
+				// jump to my login activity
+				loginToServer(null);
+			} else if (v == i_register) {
+				Intent i = new Intent(getActivity(), RegisterActivity.class);
+				startActivity(i);
+			}
+		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (app.isFrg_me_needUpdate) {
+			initTopView("".equals(app.tokenKey)? false : true);
+		}
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// Check which request we're responding to
+		super.onActivityResult(requestCode, resultCode, data);
+		//		String result = data.getExtras().getString("result");
+
+		// check if i need update
+//		if (((MyApplication)getActivity().getApplication()).isFrg_me_needUpdate == false) {
+
+		/*	if (requestCode == 2 && data != null) {
+				*//*app.username = data.getStringExtra(Constants.START_ACTIVITY_FOR_RESULT_KEY);
+				app.points = data.getStringExtra (Constants.POINTS);
+				app.pic = data.getStringExtra (Constants.PIC);*//*
+				if (username.trim().length() >= 6)
+					setLoggedState(true, username);
+			} else*/ if (requestCode == 3 && data != null && !"".equals(Utils.getTokenKey(app))) {
+			String infoS = data.getStringExtra("message");
+			UserSelfInfoEntity info = (new Gson()).fromJson(infoS, UserSelfInfoEntity.class);
+			if (info == null) {
+				setLoggedState(false, "");
+			} else {
+//					makeToast("information changed.");
+				// send the informations to the server and update the local view.
+				updateUserInformations (info);
+				makeToast("info Changed");
+			}
+//				boolean isLogged = data.getBooleanExtra(Constants.UNLOGGED, false);
+		} /*else if (requestCode == 11 && data != null) {
+				// tell the main activity to proceed the change.
+			*//*	((MainActivity) getActivity()).selectItem(MainActivity.TAB_SHOPPING_CART);
+				((MainActivity) getActivity()).mySelfFragmentNeedUpdate(true);*//*
+			}*/else {
+			if ("".equals(Utils.getTokenKey(app)))
+			((MainActivity) getActivity()).selectItem(MainActivity.TAB_HOME);
+		}
+		/*}*/ /*else {
+			((MainActivity) getActivity()).selectItem(MainActivity.TAB_ME);
+		}*/
+	}
+
+	private void updateUserInformations(final UserSelfInfoEntity info) {
+
+/*key=》登陆令牌
+            uName=》用户名
+            tName=>真实姓名
+            email=>邮箱
+            sex=》性别*/
+		showDialog ();
+		String link = NewLink.UPDATE_USER_INFO+"&key="+Utils.getTokenKey((MyApplication) getActivity().getApplication());
+		String tName = Utils.encodeChinese(info.tName);
+		try {
+			tName = URLEncoder.encode(info.tName, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		link += "&tName="+ tName +"&email="+info.email+"&sex="+info.sex;
+		VolleyRequest.GetCookieRequest(getActivity(), link, new HttpStringRequsetCallBack() {
+			@Override
+			public void onSuccess(String result) {
+				/* success */
+				try {
+					L.d("pic:::", result);
+					JsonElement elm = (new Gson()).fromJson(result, JsonElement.class).getAsJsonObject().get("error");
+					String error = elm.getAsString();
+					if ("0".equals(error)) {
+						// no error
+						// update the myself view
+//						app.isFrg_me_needUpdate = true;
+						((MainActivity)getActivity()).selectItem(MainActivity.TAB_ME);
+						// set up the changes inside the app.
+						app.username = info.tName;
+						app.points = info.points;
+//						app.pic = info.pic;
+						initTopView(true);
+						CustomToast.makeToast(getActivity(), getString(R.string.information_change_success), Toast.LENGTH_SHORT);
+					} else {
+						CustomToast.makeToast(getActivity(), getString(R.string.information_change_failure), Toast.LENGTH_SHORT);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					CustomToast.makeToast(getActivity(), getString(R.string.information_change_failure), Toast.LENGTH_SHORT);
+				} finally {
+					dismissDialog_();
+				}
+			}
+
+			@Override
+			public void onFail(String error) {
+				/*failure 可能是网络的问题 */
+				CustomToast.makeToast(getActivity(), getString(R.string.information_change_failure), Toast.LENGTH_SHORT);
+			}
+		});
+	}
+
+	private void dismissDialog_() {
+		if (dialog != null) {
+			dialog.dismiss(); dialog.cancel(); dialog = null;
+		}
+	}
+
+	private void showDialog() {
+		dialog = new LoadingDialog(getActivity());
+		dialog.show();
+	}
+
+	// jumpTo 是跳过去那个activity的class命令~ 
+	// 他不为空的情况下，登录成功他就会调到用户徐需要的那个activity里面去
+	public void loginToServer(Class <?> jumpTo, String key) {
+		Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
+		if (jumpTo == null)
+			getActivity().startActivityForResult(loginIntent, 2);
+		else  {
+			loginIntent.putExtra(LoginActivity.JUMP_TO_ACTIVITY, jumpTo);
+			loginIntent.putExtra(MockActivity.GET_TO, MockActivity.EXCHANGE_POINTS_ACTIVITY);
+			getActivity().startActivity(loginIntent);
+		}
+	}
+
+	public void loginToServer(Class <?> jumpTo) {
+		Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
+		makeToast ("Jumpto ==  "+jumpTo);
+		if (jumpTo == null)
+			getActivity().startActivityForResult(loginIntent, 2);
+		else  {
+			loginIntent.putExtra(LoginActivity.JUMP_TO_ACTIVITY, jumpTo);
+			getActivity().startActivity(loginIntent);
+		}
+	}
+
+	private void makeToast(String string) {
+		// TODO Auto-generated method stub
+//		CustomToast.makeToast(getActivity(), string, Toast.LENGTH_SHORT);
+	}
+
+	public static final int LOGIN_REQUEST = 1;  // The request code
+
+
+	public interface OnFragmentInteractionListener {
+		// TODO: Update argument type and name
+		void onFragmentInteraction(int i);
+	}
+
+	private class GoodManagmentTopOnclickListener implements View.OnClickListener {
+
+		private int MENU_ID = -1;
+
+		public GoodManagmentTopOnclickListener(int i) {
+			MENU_ID = i;
+		}
+
+		@Override
+		public void onClick(View v) {
+			//
+			Intent i = new Intent(getActivity(), GoodsManagementActivity.class);
+			i.putExtra(Constants.MENU_POSITION, MENU_ID);
+			startActivity(i);
+		}
+	}
+
+	@Override
+	public void startActivity(Intent intent) {
+		super.startActivity(intent);
+		getActivity().overridePendingTransition(R.anim.custom_in_anim, R.anim.custom_out_anim);
+	}
+
+	@Override
+	public void startActivityForResult(Intent intent, int requestCode) {
+		super.startActivityForResult(intent, requestCode);
+		getActivity().overridePendingTransition(R.anim.custom_in_anim, R.anim.custom_out_anim);
+	}
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/shopping_btn_down" android:state_checked="true" android:state_focused="true" android:state_pressed="true"/>
+    <item android:drawable="@drawable/shopping_btn_nor" />
+
+</selector><!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/drawable/shopping_bottom_button_bg.xml -->

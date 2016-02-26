@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="80dp">
+
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:background="@color/green"
+            android:layout_height="10px"
+            android:layout_weight="1"
+            android:id="@+id/progress_1"
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:background="@color/page_background"
+            android:layout_height="10px"
+            android:id="@+id/progress_2"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:background="@color/page_background"
+            android:layout_height="10px"
+            android:id="@+id/progress_3"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:paddingRight="18dp"
+        android:paddingLeft="18dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:background="@color/transparent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/progress_down"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/icon_progress_1"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/progress_down"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/icon_progress_2"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:background="@color/transparent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:id="@+id/icon_progress_3"
+                android:layout_width="wrap_content"
+                android:src="@drawable/icon_graycircle"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:background="@color/transparent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/icon_graycircle"
+                android:layout_alignParentRight="true"
+                android:id="@+id/icon_progress_4"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2">
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:background="@color/transparent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            >
+            <TextView
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:text="@string/admisson_progress"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:background="@color/transparent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            ></RelativeLayout>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:background="@color/transparent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            ></RelativeLayout>
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:background="@color/transparent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            >
+            <TextView
+                android:id="@+id/tv_state_3"
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:text="@string/rembourse_money_progress"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+       ></LinearLayout>
+
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:text="@string/submit"
+        android:layout_gravity="left"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:text="@string/finish"
+        android:layout_gravity="right"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/linearLayout2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

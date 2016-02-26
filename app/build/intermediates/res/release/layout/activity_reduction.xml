@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_rootview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="cn.mstar.store.ownee.activity.LoginActivity" >
+
+    <include layout="@layout/title_layout" />
+
+    <!--
+         make up the items.
+    	1- put a viewpager inside the stuff.
+    	2- put multiples fragments inside it.
+    -->
+
+    <cn.mstar.store.ownee.customviews.SlidingTabLayout
+        android:id="@+id/reduction_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_reduction"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    
+    
+</LinearLayout><!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/activity_reduction.xml -->

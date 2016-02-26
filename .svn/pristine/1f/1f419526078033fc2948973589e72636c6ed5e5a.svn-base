@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lny_network_error_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical"
+     >
+
+        <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/icon_wifi_big" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/network_state_error"
+        android:textColor="@color/maBlack"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/network_state_error_reason"
+        android:textColor="@color/blacksmoke"
+        android:textSize="12sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/network_state_error_try_connect"
+        android:textColor="@color/blacksmoke"
+        android:textSize="12sp" />
+    <TextView
+        android:id="@+id/wifi_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_network_reload_bg"
+        android:gravity="center"
+        android:text="@string/bt_network_try_connect" />
+    
+</LinearLayout><!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/layout/network_error_layout.xml -->

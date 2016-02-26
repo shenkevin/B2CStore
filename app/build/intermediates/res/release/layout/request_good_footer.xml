@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/page_background"
+    android:paddingBottom="20dp"
+    android:layout_height="wrap_content"
+   >
+
+    <!-- 联系信息 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/contact_way"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text=" *"
+                android:textColor="@color/red"
+                android:paddingBottom="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/transparent"
+        android:layout_height="1px"/>
+
+    <!--收人信息-->
+
+
+    <RelativeLayout
+        android:id="@+id/reciever_address_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="90dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/enter_manager_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/btn_expand_pressed" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/enter_manager_address"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:baselineAligned="true">
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recevier"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small_medium" />
+
+                    <TextView
+                        android:id="@+id/receiver_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small_medium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone"
+                        android:textSize="@dimen/text_size_small_medium" />
+
+                    <TextView
+                        android:id="@+id/receiver_phone_tv"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small_medium" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recevier_address"
+                    android:layout_marginRight="10dp"
+                    android:textSize="@dimen/text_size_small" />
+
+                <TextView
+                    android:id="@+id/receives_an_address_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <!-- 问题描述 -->
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingTop="5dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/problem_description"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text=" *"
+                android:textColor="@color/red"
+                android:paddingBottom="10dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:background="@color/light_gray"
+            android:lines="5"
+            android:padding="5dp"
+            android:id="@+id/ed_message"
+            android:textSize="@dimen/text_size_small_medium"
+            android:gravity="top|left"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingBottom="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/request_good_footer.xml -->

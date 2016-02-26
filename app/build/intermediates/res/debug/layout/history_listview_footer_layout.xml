@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/search_item_bg"
+    android:gravity="center"
+    android:orientation="horizontal" >
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dip"
+        android:src="@drawable/icon_shopcart_delete"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/app_name"/>
+	<TextView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="50dip" 
+	    android:gravity="center_vertical"
+	    android:text="@string/clear_all"
+	    android:textColor="@color/gray"
+	    android:textSize="@dimen/text_size_small_medium"
+	    />
+</LinearLayout>
+<!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/history_listview_footer_layout.xml -->

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+<!-- 
+    <LinearLayout
+        android:id="@+id/product_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="90dip"
+        android:layout_marginTop="10dip"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dip" >
+
+        <ImageView
+            android:id="@+id/product_img"
+            android:layout_width="70dip"
+            android:layout_height="70dip"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/picture1" />
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:textSize="@dimen/text_size_small_medium" />
+
+            <TextView
+                android:id="@+id/product_norms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_small_medium" />
+
+            <TextView
+                android:id="@+id/product_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small" />
+        </LinearLayout>
+    </LinearLayout>
+ -->
+    <ListView
+        android:id="@+id/pay_mode_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dip"
+        android:dividerHeight="1px" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn_confirm_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_confirm_pay_bg"
+            android:gravity="center"
+            android:text="@string/confirm_pay"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small" />
+        
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/layout/activity_pay.xml -->

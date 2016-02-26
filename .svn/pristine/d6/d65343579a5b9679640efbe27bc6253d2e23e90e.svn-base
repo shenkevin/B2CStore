@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <item android:drawable="@drawable/dot_nor" android:state_enabled="true" />
+    <item android:drawable="@drawable/dot_down" android:state_enabled="false"/>
+
+</selector><!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/drawable/dot.xml -->

@@ -1,0 +1,24 @@
+package cn.mstar.store.ownee.fragments;
+
+import cn.mstar.store.ownee.activity.GoodsManagementActivity;
+import cn.mstar.store.ownee.libs.SwipeRefreshListFragment;
+import cn.mstar.store.util.CustomToast;
+import android.support.v4.app.Fragment;
+
+public abstract class AbstractGoodsManagmentFragment extends SwipeRefreshListFragment {
+
+
+
+	public void NoResultException () {
+
+		// if no result, each fragment will see an icon on it's top... showing that the network is bad...
+		// and the button will help to send the network request again and again
+		   
+		// show the network view that is on my top and hide the back for the other ...
+		
+		
+		// and when press on the current button... relaunch the request thats shows the data.
+		
+	}
+
+}

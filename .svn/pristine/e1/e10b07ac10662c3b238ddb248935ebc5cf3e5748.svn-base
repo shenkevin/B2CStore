@@ -1,0 +1,181 @@
+package cn.mstar.store.ownee.activity;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import cn.mstar.store.R;
+import cn.mstar.store.app.MyApplication;
+import cn.mstar.store.ownee.utils.NewLink;
+import cn.mstar.store.ownee.utils.Utils;
+import cn.mstar.store.util.ImageLoadOptions;
+import cn.mstar.store.util.L;
+import cn.mstar.store.util.Util;
+import cn.mstar.store.util.VolleyRequest;
+import cn.mstar.store.view.LoadingDialog;
+
+public class ReturnGoodsProgressActivity extends AppCompatActivity {
+
+
+    // 进度条
+    @Bind(R.id.progress_1) RelativeLayout rel_progress_1;
+    @Bind(R.id.progress_2) RelativeLayout rel_progress_2;
+    @Bind(R.id.progress_3) RelativeLayout rel_progress_3;
+
+    // 进度按钮
+    @Bind(R.id.icon_progress_1)  ImageView iv_icon_progress_1;
+    @Bind(R.id.icon_progress_2)  ImageView iv_icon_progress_2;
+    @Bind(R.id.icon_progress_3)  ImageView iv_icon_progress_3;
+    @Bind(R.id.icon_progress_4)  ImageView iv_icon_progress_4;
+
+
+    String proId = "";
+    String orderId = "";
+
+    public static final String PROID = "PROID", ORDERID = "ORDERID";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_return_goods_progress);
+        Utils.setNavigationBarColor(this, getResources().getColor(R.color.status_bar_color));
+        Utils.setStatusBarColor(this, getResources().getColor(R.color.status_bar_color));
+        // inflate the data with the content of the data.
+        ButterKnife.bind(this);
+        proId = getIntent().getStringExtra(PROID);
+        orderId = getIntent().getStringExtra(ORDERID);
+        loadInfo (proId, orderId);
+    }
+
+    private void loadInfo(String proId, String orderId) {
+
+        i_showProgressDialog();
+        String link = NewLink.RETURN_PRODUCT_PROGRESS+"&key="+ Utils.getTokenKey((MyApplication) getApplication())+"&orderId="+orderId+"&proId="+proId;
+        VolleyRequest.GetCookieRequest(this, link, new VolleyRequest.HttpStringRequsetCallBack() {
+            @Override
+            public void onSuccess(String result) {
+                L.d("progress:::", result);
+                i_dismissProgressDialog();
+            }
+
+            @Override
+            public void onFail(String error) {
+                makeToast(getString(R.string.network_error));
+                i_dismissProgressDialog();
+                finish();
+            }
+        });
+    }
+
+    private void makeToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_return_goods_progress, menu);
+        return true;
+    }
+
+    LoadingDialog dialog;
+    public void i_showProgressDialog() {
+        dialog = new LoadingDialog(this);
+        dialog.show();
+    }
+
+    public void i_dismissProgressDialog () {
+        if (dialog != null) {
+            dialog.cancel();
+            dialog.dismiss();
+            dialog = null;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public void setState (int i) {
+
+        // 一共有四个状态、 1.提交 2. 审核中 3. 退款中 4. 完成
+
+        // 把全进度条都变成灰色的
+        setAllGray ();
+        //
+        String uri_1 = "drawable://"+R.drawable.progress_down;
+        String uri_0 = "drawable://"+R.drawable.progress_norm;
+
+        switch (i) {
+            case 1:
+                ImageLoader.getInstance().displayImage(uri_1, iv_icon_progress_1, ImageLoadOptions.getOptions());
+                break;
+            case 2:
+                rel_progress_1.setBackgroundResource(R.color.green);
+                ImageLoader.getInstance().displayImage(uri_0, iv_icon_progress_1, ImageLoadOptions.getOptions());
+                ImageLoader.getInstance().displayImage(uri_1, iv_icon_progress_2, ImageLoadOptions.getOptions());
+                break;
+            case 3:
+                rel_progress_1.setBackgroundResource(R.color.green);
+                rel_progress_2.setBackgroundResource(R.color.green);
+                ImageLoader.getInstance().displayImage(uri_0, iv_icon_progress_1, ImageLoadOptions.getOptions());
+                ImageLoader.getInstance().displayImage(uri_0, iv_icon_progress_2, ImageLoadOptions.getOptions());
+                ImageLoader.getInstance().displayImage(uri_1, iv_icon_progress_3, ImageLoadOptions.getOptions());
+                break;
+            case 4:
+                rel_progress_1.setBackgroundResource(R.color.green);
+                rel_progress_2.setBackgroundResource(R.color.green);
+                rel_progress_3.setBackgroundResource(R.color.green);
+                ImageLoader.getInstance().displayImage(uri_0, iv_icon_progress_1, ImageLoadOptions.getOptions());
+                ImageLoader.getInstance().displayImage(uri_0, iv_icon_progress_2, ImageLoadOptions.getOptions());
+                ImageLoader.getInstance().displayImage(uri_0, iv_icon_progress_3, ImageLoadOptions.getOptions());
+                ImageLoader.getInstance().displayImage(uri_1, iv_icon_progress_4, ImageLoadOptions.getOptions());
+                break;
+        }
+
+    }
+
+    private void setAllGray() {
+
+/* @Bind(R.id.progress_1) RelativeLayout rel_progress_1;
+    @Bind(R.id.progress_2) RelativeLayout rel_progress_2;
+    @Bind(R.id.progress_3) RelativeLayout rel_progress_3;
+
+    // 进度按钮
+    @Bind(R.id.icon_progress_1)  ImageView iv_icon_progress_1;
+    @Bind(R.id.icon_progress_2)  ImageView iv_icon_progress_2;
+    @Bind(R.id.icon_progress_3)  ImageView iv_icon_progress_3;
+    @Bind(R.id.icon_progress_4)  ImageView iv_icon_progress_4;
+*/
+        rel_progress_1.setBackgroundResource(R.color.page_background);
+        rel_progress_2.setBackgroundResource(R.color.page_background);
+        rel_progress_3.setBackgroundResource(R.color.page_background);
+
+        String uri = "drawable://"+R.drawable.icon_graycircle;
+        ImageLoader.getInstance().displayImage(uri, iv_icon_progress_1, ImageLoadOptions.getOptions());
+        ImageLoader.getInstance().displayImage(uri, iv_icon_progress_2, ImageLoadOptions.getOptions());
+        ImageLoader.getInstance().displayImage(uri, iv_icon_progress_3, ImageLoadOptions.getOptions());
+        ImageLoader.getInstance().displayImage(uri, iv_icon_progress_4, ImageLoadOptions.getOptions());
+        return;
+    }
+
+}

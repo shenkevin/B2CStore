@@ -1,0 +1,15 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+      android:background="@color/page_background"
+    tools:context="cn.mstar.store.ownee.fragments.Goods_MockFragment" >
+
+    <ListView
+        android:id="@+id/lv_reduction_items"
+        android:layout_width="match_parent"
+        android:divider="@null"
+        android:background="@color/transparent"
+        android:layout_height="wrap_content" />
+
+</FrameLayout><!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/layout/fragment_reduction_ticket_item.xml -->

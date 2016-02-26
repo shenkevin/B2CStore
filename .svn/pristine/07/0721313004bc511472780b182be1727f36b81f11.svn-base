@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/home_title"
+        layout="@layout/home_title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        tools:ignore="ScrollViewCount" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <FrameLayout
+                android:id="@+id/banner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <cn.mstar.store.view.JazzyViewPager
+                    android:id="@+id/index_product_images_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/banner_height"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:id="@+id/index_product_images_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/gold_layout"
+                android:layout_width="match_parent"
+                android:layout_height="100dip"
+                android:layout_below="@id/banner_layout"
+                android:layout_marginTop="@dimen/home_mod_space"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_goldbar"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/home_mod_space"
+                    android:layout_weight="1"
+                    android:background="@drawable/bullion" />
+
+                <TextView
+                    android:id="@+id/tv_gold"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/gold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gem_layout"
+                android:layout_width="match_parent"
+                android:layout_height="100dip"
+                android:layout_below="@id/gold_layout"
+                android:layout_marginTop="@dimen/home_mod_space"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_jewellery"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/home_mod_space"
+                    android:layout_weight="1"
+                    android:background="@drawable/jewellery" />
+
+                <TextView
+                    android:id="@+id/tv_emerald"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/emerald" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ring_layout"
+                android:layout_width="match_parent"
+                android:layout_height="100dip"
+                android:layout_below="@id/gem_layout"
+                android:layout_marginTop="@dimen/home_mod_space"
+                android:orientation="horizontal" >
+				<LinearLayout 
+				    android:layout_width="0dip"
+				    android:layout_height="match_parent"
+				    android:orientation="horizontal"
+				    android:layout_weight="1"
+				    android:layout_marginRight="@dimen/home_mod_space"
+				    >
+				    <TextView 
+				        android:id="@+id/tv_k_gold"
+				        android:layout_width="0dip"
+				        android:layout_height="match_parent"
+				        android:layout_weight="1"
+				        android:layout_marginRight="@dimen/home_mod_space"
+				        android:background="@drawable/k_gold"
+				        />
+				    <TextView 
+				        android:id="@+id/tv_platinum"
+				        android:layout_width="0dip"
+				        android:layout_height="match_parent"
+				        android:layout_weight="1"
+				        android:background="@drawable/platinum"
+				        />
+				</LinearLayout>
+               <TextView
+                   android:id="@+id/tv_cai_bao" 
+                   android:layout_width="0dip"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"
+                   android:background="@drawable/cai_bao"
+                   />
+            </LinearLayout>
+			<LinearLayout
+			    android:id="@+id/new_layout" 
+			    android:layout_below="@id/ring_layout"
+			    android:layout_marginTop="@dimen/home_mod_space"
+			    android:layout_width="match_parent"
+			    android:layout_height="310dip"
+			    android:orientation="horizontal"
+			    >
+			    <LinearLayout 
+			        android:layout_width="125dip"
+			        android:layout_height="match_parent"
+			        android:orientation="vertical"
+			        android:layout_marginRight="@dimen/home_mod_space"
+			        >
+				    <TextView 
+				        android:id="@+id/tv_best_sellers"
+				        android:layout_width="match_parent"
+				        android:layout_height="180dip"
+				        android:background="@drawable/best_sellers"
+				        android:layout_marginBottom="@dimen/home_mod_space"
+				        />
+			        <TextView 
+			            android:id="@+id/tv_the_first"
+			            android:layout_width="match_parent"
+			            android:layout_height="125dip"
+			            android:background="@drawable/the_first"
+			            />
+			    </LinearLayout>
+			    <LinearLayout 
+			        android:layout_width="0dip"
+			        android:layout_height="match_parent"
+			        android:orientation="vertical"
+			        android:layout_weight="1"
+			        >
+			        <TextView 
+			            android:id="@+id/tv_new_product"
+			            android:layout_width="match_parent"
+			            android:layout_height="125dip"
+			            android:background="@drawable/new_product"
+			            />
+			        <LinearLayout 
+			            android:layout_marginTop="@dimen/home_mod_space"
+			            android:layout_width="match_parent"
+			            android:layout_height="180dip"
+			            android:orientation="horizontal"
+			            >
+			            <LinearLayout 
+			                android:layout_width="115dip"
+			                android:layout_height="match_parent"
+			                android:layout_marginRight="@dimen/home_mod_space"
+			                android:orientation="vertical"
+			                >
+			                <TextView 
+			                    android:id="@+id/tv_gift"
+			                    android:layout_width="match_parent"
+			                    android:layout_height="0dip"
+			                    android:layout_weight="1"
+			                    android:background="@drawable/second"
+			                    android:layout_marginBottom="@dimen/home_mod_space"
+			                    />
+			                <TextView 
+			                    android:id="@+id/tv_payment"
+			                    android:layout_width="match_parent"
+			                    android:layout_height="0dip"
+			                    android:layout_weight="1"
+			                    android:background="@drawable/third"
+			                    />
+			            </LinearLayout>
+			            <TextView 
+			                android:id="@+id/tv_sales"
+			                android:layout_width="0dip"
+			                android:layout_weight="1"
+			                android:layout_height="match_parent"
+			                android:background="@drawable/fourth"
+			                />
+			        </LinearLayout>
+			    </LinearLayout>
+			</LinearLayout>
+           
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout><!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/layout/fragment_home.xml -->

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/page_background"
+    android:orientation="vertical" >
+
+    <include 
+        android:id="@+id/title_layout"
+        layout="@layout/home_title_layout" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+       <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fadingEdge="none"
+            android:fadingEdgeLength="0dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            tools:ignore="ScrollViewCount" >
+		<LinearLayout 
+		    android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <FrameLayout
+                android:id="@+id/banner_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <cn.mstar.store.customviews.JazzyViewPager
+                    android:id="@+id/index_product_images_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/banner_height"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:id="@+id/index_product_images_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal" />
+            </FrameLayout>
+
+            <WebView
+                android:id="@+id/home_webview"
+                 android:focusable="false"
+                android:visibility="gone"
+    			android:focusableInTouchMode="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="match_parent"
+                layout="@layout/network_error_layout" />
+
+            <ProgressBar
+                android:layout_marginTop="100dp"
+                android:id="@+id/webview_progressbar"
+                android:layout_width="wrap_content"
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal"
+                android:indeterminateTint="@color/little_red"
+                android:indeterminateTintMode="src_in"
+                android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

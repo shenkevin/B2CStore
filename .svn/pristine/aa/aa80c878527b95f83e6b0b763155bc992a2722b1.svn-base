@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/page_background"
+    android:fitsSystemWindows="true"
+    tools:context="cn.mstar.store.ownee.activity.RequestGoodsReturnActivity">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:id="@+id/listview"
+        android:dividerHeight="2dp"
+        android:divider="@color/page_background"
+        android:layout_above="@+id/bottom_layout"
+        android:layout_below="@+id/the_title_layout"
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/title_layout"
+        />
+
+    <!-- bottom pav -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/transparent"
+        android:layout_above="@+id/bottom_layout"
+        android:layout_height="2px"/>
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/whitesmoke"
+        android:gravity="center_vertical|right" >
+
+        <Button
+            android:id="@+id/btn_sendrequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/btn_confrimorder_select"
+            android:text="@string/sendnow"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_medium" />
+    </LinearLayout>
+
+</RelativeLayout>

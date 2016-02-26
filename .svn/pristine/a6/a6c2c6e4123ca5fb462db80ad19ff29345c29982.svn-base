@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.mstar.store.ownee.customviews.BackgroundContainer xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:id="@+id/listViewBackground"
+    android:orientation="vertical" >
+
+    <ListView
+        android:scrollbars="none"
+        android:id="@+id/lv_category_innerlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</cn.mstar.store.ownee.customviews.BackgroundContainer>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MstarStoreAppcation</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- 引导页 -->
+    <string name="guide_button_text">立即体验</string>
+    <!-- Main -->
+    <string name="home">首页</string>
+    <string name="custom">定制</string>
+    <string name="me">我的</string>
+    <string name="more">更多</string>
+    <string name="exit_app">再按一次退出程序</string>
+
+    <!-- home -->
+    <string name="index_search_edit_hint">搜索范儿珠宝</string>
+
+    <!-- JazzyViewPager -->
+    <string-array name="jazzy_effects">
+        <item>Standard</item>
+        <item>Tablet</item>
+        <item>CubeIn</item>
+        <item>CubeOut</item>
+        <item>FlipVertical</item>
+        <item>FlipHorizontal</item>
+        <item>Stack</item>
+        <item>ZoomIn</item>
+        <item>ZoomOut</item>
+        <item>RotateUp</item>
+        <item>RotateDown</item>
+        <item>Accordion</item>
+    </string-array>
+    <!-- JazzyViewPager -->
+
+
+	<!-- me -->
+	<string name="welcome_qianxi">欢迎来到千禧之星</string>
+	<string name="register">注册</string>
+	<string name="login">登录</string>
+</resources>

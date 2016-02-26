@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_layout" />
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/salesBtn"
+            style="@style/product_list"
+            android:background="@drawable/productlist_btn_select"
+            android:button="@null"
+            android:checked="true"
+            android:text="@string/sales_volume" />
+
+        <RadioButton
+            android:id="@+id/priceBtn"
+            style="@style/product_list"
+            android:background="@drawable/productlist_btn_select"
+            android:drawableRight="@drawable/homepage_list_price"
+            android:text="@string/price" />
+
+        <RadioButton
+            android:id="@+id/newsProductBtn"
+            style="@style/product_list"
+            android:background="@drawable/productlist_btn_select"
+            android:text="@string/news_product" />
+    </RadioGroup>
+
+    <cn.mstar.store.view.PullToRefreshView
+        android:id="@+id/pull_refresh_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <cn.mstar.store.view.GridViewWithHeaderAndFooter
+            android:id="@+id/product_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@null"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:visibility="visible" >
+        </cn.mstar.store.view.GridViewWithHeaderAndFooter>
+  </cn.mstar.store.view.PullToRefreshView>
+
+</LinearLayout><!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/layout/activity_productlist.xml -->

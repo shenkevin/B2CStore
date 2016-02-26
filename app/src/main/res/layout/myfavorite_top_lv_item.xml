@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:background="@color/white"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:singleLine="true"
+        android:text="@string/favorite_all_categories"
+        android:textColor="@color/maBlack"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_number_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/category_name"
+        android:text="@string/inner_category_count"
+        android:textColor="@color/little_red"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/iv_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_number_item"
+        android:src="@drawable/icon_down" />
+
+</RelativeLayout>

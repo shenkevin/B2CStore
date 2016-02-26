@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+ 
+    <include
+        layout="@layout/title_layout" />
+
+    <ListView
+        android:layout_below="@+id/the_title_layout"
+        android:id="@+id/lv_shopping_car_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!-- but the all menu onto the bottom -->
+
+    <RelativeLayout
+        android:id="@+id/rel_shopping_car_bottom_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <!-- buttons and all the other stuff -->
+
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/layout/activity_shopping_car.xml -->

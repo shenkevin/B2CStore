@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+        <ListView 
+        android:id="@+id/history_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/gray"
+        android:dividerHeight="1px"
+        >
+        
+    </ListView>
+
+</LinearLayout>
+<!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/layout/frigment_history_search.xml -->

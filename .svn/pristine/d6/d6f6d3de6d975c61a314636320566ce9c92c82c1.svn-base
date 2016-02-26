@@ -1,0 +1,11 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cn.mstar.store.ownee.fragments.deletingsoon.Goods_WaitingForPayFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:text="@string/waitingforpay" />
+
+</FrameLayout>
+<!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/layout/fragment_goods__waiting_for_pay.xml -->

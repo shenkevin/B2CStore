@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/nineoldandroids.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="302641a4becc017c01e83308ee17a484d6f371cd">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/nineoldandroids-1c1770585cb8c5b2051195c5f39bc89d482b4429.jar" />
+    </item>
+    <item
+        jar="/Users/nick/DevTools/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-c0b6e51af174ef849dd9401ec37c756553329a8b.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/libammsdk.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="47f4993168154fa73377d7470b9f6887d48a8023">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/libammsdk-4e7093cb8eb7a9d70b499f0459737bf7c90df083.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-4b362ee8c6bd0bbf9a528af222613c8d3206a815.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/BaiduLBS_Android.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f4977070be592aab969aea2037bdc94090890a97">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/BaiduLBS_Android-5adcd5e41ea6d9d1d7c0953a6d92dce9c32713af.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/classes-8dbdce1c53cab4a86facda5fe83f4bfb57fbc98b.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/httpmime-4.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d34b163e52a9727101aced60775d51c5085390a1">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/httpmime-4.1.1-d7a4ff6b40792f7bee8991e9feaaf7447a7fcebd.jar" />
+    </item>
+    <item
+        jar="/Users/nick/.gradle/caches/modules-2/files-2.1/com.readystatesoftware.systembartint/systembartint/1.0.4/6404f77b92ec723cc132e825afe85a07da85ee6/systembartint-1.0.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="06404f77b92ec723cc132e825afe85a07da85ee6">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/systembartint-1.0.4-d35eb5aa5ab4fb9a5df2d094c0333a573fc09ad0.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/exploded-aar/com.github.manuelpeinado.fadingactionbar/fadingactionbar/3.1.2/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1db28e119b406a5fe367b63fb1be083d5dfe298a">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/classes-a0c2fb499bd156836723558ec39e26fabd7c2c82.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/classes-4950e02fbfbbeeca1cb62eb4dd5ad42733846f0e.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/universal-image-loader-1.9.2_sources.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e33324b770223932d467e4ec39639b0c15f3b94e">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.2_sources-54114a13ccc72bda7bf6d407923a63364a110a27.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/zxing.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e88c14e6e7daa0fa65172a62b54ee6a16ff4162d">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/zxing-98288d5f85ffe8b11da147ac8e95f79630ab4ab1.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/photoview-library-1.2.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b9000943d77c17d231bf3141a712828f2636c2ea">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/photoview-library-1.2.2-761a4060b900b6c4314c6b9f4bc93733e315b4e6.jar" />
+    </item>
+    <item
+        jar="/Users/nick/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/gson-2.2.4-5c2ba5c7080419663899b37079ce1fd98d191c6b.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/Volley.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="77faa9ffd189160d1e22c58fdf5eed0a9a08b816">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/Volley-692536b9d5e136f61b71ba9b2400c78b01becfe7.jar" />
+    </item>
+    <item
+        jar="/Volumes/Transcend/MstarStoreAppcationStudio/app/libs/alipaySDK-20150724.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="04d872e0c215e03f06e4c8440d3bbef050898e44">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/alipaySDK-20150724-ce5045aad902372c901d8ad653c969c24512bab1.jar" />
+    </item>
+    <item
+        jar="/Users/nick/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/activeandroid-3.1.0-SNAPSHOT-45bb7a746b76bca503313d5ab63b617cfb58c665.jar" />
+    </item>
+    <item
+        jar="/Users/nick/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Volumes/Transcend/MstarStoreAppcationStudio/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1-979c5c32e917842c82026e85d8544c8b4bd0c3e6.jar" />
+    </item>
+
+</items>

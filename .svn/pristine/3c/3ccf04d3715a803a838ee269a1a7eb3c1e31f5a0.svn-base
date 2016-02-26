@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/btn_guide_down" />
+    <item android:state_pressed="false" android:drawable="@drawable/btn_guide_nor" />
+</selector><!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/drawable/btn_guide_select.xml -->

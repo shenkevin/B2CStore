@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\libs\photoview-library-1.2.2.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="b9000943d77c17d231bf3141a712828f2636c2ea">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\photoview-library-1.2.2-b7eaef868de2aeb5a9a333ffc50d662e1b17db41.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\libs\nineoldandroids.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="302641a4becc017c01e83308ee17a484d6f371cd">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\nineoldandroids-db80bdc5975a6fec7568486b29c47d5079ec11f4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.michaelpardo\activeandroid\3.1.0-SNAPSHOT\4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08\activeandroid-3.1.0-SNAPSHOT.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\activeandroid-3.1.0-SNAPSHOT-37c7f31c332bb8b33d38c1341e57fae775181fcd.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\classes-4d7362071c0591be0d198ac53a9853d9f30a754d.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.readystatesoftware.systembartint\systembartint\1.0.4\6404f77b92ec723cc132e825afe85a07da85ee6\systembartint-1.0.4.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="06404f77b92ec723cc132e825afe85a07da85ee6">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\systembartint-1.0.4-d9b0eeaf337481752e3ba4d90a9d6b76c651e07a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-fc861cbde294a7e4a9efd57936d766cb077b60e2.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\libs\zxing.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="e88c14e6e7daa0fa65172a62b54ee6a16ff4162d">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\zxing-5ada34118d66b8b71379dee73e4ca8ff75afeb27.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\gson-2.2.4-752a4694a6e7953de1b9e1ac68ee96a302f761f3.jar" />
+    </item>
+    <item
+        jar="D:\adt-bundle\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-4397645273b3aa45df07883d0111a9ca4b87c9c8.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\classes-d1a1747ca4010ea251367051fc406958b8289687.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\libs\httpmime-4.1.1.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="d34b163e52a9727101aced60775d51c5085390a1">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\httpmime-4.1.1-5b4e5061045ef5d506b445b13d995bf5b1d202c1.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\libs\universal-image-loader-1.9.2_sources.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="e33324b770223932d467e4ec39639b0c15f3b94e">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.2_sources-2ed7d71eb1f9ee2a175fc6ba502516ba995ec17f.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\libs\Volley.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="77faa9ffd189160d1e22c58fdf5eed0a9a08b816">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\Volley-e75a84c24677e4d3875abf66372fd3b3f240aed7.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\libs\alipaySDK-20150724.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="04d872e0c215e03f06e4c8440d3bbef050898e44">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\alipaySDK-20150724-1e83047f776b91c7b66bf0768e477102d222ae28.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\libs\BaiduLBS_Android.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="f4977070be592aab969aea2037bdc94090890a97">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\BaiduLBS_Android-163a1b836c6ba7ce35d89e7a3b4a6a6be784dfca.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\exploded-aar\com.github.manuelpeinado.fadingactionbar\fadingactionbar\3.1.2\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1db28e119b406a5fe367b63fb1be083d5dfe298a">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\classes-ede2b3577b395b86a9982ed33423b12aa7ae47d6.jar" />
+    </item>
+    <item
+        jar="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="D:\StudioProjects\MstarStoreAppcationStudio\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-d6df4aa36ffce044a8b4f4fd04582b05fa8882ce.jar" />
+    </item>
+
+</items>

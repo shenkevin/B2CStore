@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    android:layout_height="match_parent" >
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:visibility="gone"
+        android:dividerHeight="10dp"
+        android:divider="@color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/loading_layout" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/no_result_layout" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/network_error_layout" />
+
+</FrameLayout><!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/fragment_refreshable_mock.xml -->

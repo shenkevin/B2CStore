@@ -1,0 +1,164 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/page_background"
+    tools:context="cn.mstar.store.ownee.activity.ReturnGoodsProgressActivity"
+    android:orientation="vertical"
+   >
+
+
+      <include layout="@layout/title_layout" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:background="@color/white"
+                android:paddingRight="15dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="@dimen/text_size_small_medium"
+                    android:text="@string/manage_progress"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="2013-23-34 09:57"
+                    android:textSize="@dimen/text_size_small_ultra"
+                    android:textColor="@color/gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/transparent"
+                android:layout_height="2dp"/>
+
+            <!--进度条-->
+            <include layout="@layout/return_good_progressbar" />
+            <!--进度条-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="15dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingRight="15dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="@dimen/text_size_small_medium"
+                    android:text="@string/order_id"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_order_id"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="@dimen/text_size_small_medium"
+                    android:text=""
+                    android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@color/transparent"
+                    android:layout_height="2dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:background="@color/white"
+                    android:paddingTop="15dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="物流信息"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+
+                    <!--自动添加物流信息-->
+                    <LinearLayout
+                        android:id="@+id/lny_logistic_details"
+                        android:layout_marginBottom="15dp"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="关联产品"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+
+                    <!--自动添加关联产品信息-->
+                    <LinearLayout
+                        android:id="@+id/lny_about_product"
+                        android:layout_marginBottom="15dp"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="问题描述"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content" />
+
+                    <!--自动添加关联产品信息-->
+                    <LinearLayout
+                        android:id="@+id/lny_problem_description"
+                        android:layout_marginBottom="15dp"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
+<!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/activity_return_goods_progress.xml -->

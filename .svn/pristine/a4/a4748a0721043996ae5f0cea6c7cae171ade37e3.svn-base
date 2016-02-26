@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/lol"
+    android:orientation="vertical"
+ >
+
+    <TextView
+        android:id="@+id/ll_confirmorder_choice_payonline"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:gravity="center"
+        android:text="@string/online_pay"
+        android:textSize="@dimen/text_size_small" />
+
+    <TextView
+        android:id="@+id/ll_confirmorder_choice_payoffline"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+
+        android:gravity="center"
+        android:text="@string/pay_on_delivery"
+        android:textSize="@dimen/text_size_small" />
+
+</LinearLayout><!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/layout/popup_pay_mode.xml -->

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <translate
+        android:duration="350"
+        android:fromXDelta="100%p"
+          android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+        android:toXDelta="0" />
+
+</set><!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/anim/cu_push_right_in.xml -->

@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_background"
+    tools:context="cn.mstar.store.ownee.activity.AboutUsActivity">
+
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic__logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="范儿Android版"
+            android:textSize="16sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:text="当前版本：1.0"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:text="All rights reserved"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:text="深圳市范儿网络有限公司版权所有 2015-2025"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

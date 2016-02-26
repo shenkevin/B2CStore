@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/page_background"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="cn.mstar.store.ownee.activity.MyFavoriteManagmentActivityFragment" >
+
+    <include layout="@layout/title_layout" />
+
+    <!-- top item of the list -->
+
+    <RelativeLayout
+        android:id="@+id/rel_all_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:animateLayoutChanges="true"
+        android:background="@color/white"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:singleLine="true"
+            android:text="@string/favorite_all_categories"
+            android:textColor="@color/maBlack"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_number_item"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/category_name"
+            android:text="@string/inner_category_count"
+            android:textColor="@color/little_red"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_number_item"
+            android:src="@drawable/icon_nor" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_favorite_below_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+  
+    <FrameLayout
+        android:id="@+id/frame_layout_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    
+</LinearLayout>

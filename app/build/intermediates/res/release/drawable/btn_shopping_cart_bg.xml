@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true" android:drawable="@drawable/button_shopping_cart_down"></item>
+    <item android:drawable="@drawable/button_shopping_cart_nor"></item>
+
+</selector>
+<!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/drawable/btn_shopping_cart_bg.xml -->

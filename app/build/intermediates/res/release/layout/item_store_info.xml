@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <ImageView
+        android:id="@+id/iv_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dip"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/picture" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dip"
+        android:layout_marginRight="70dip"
+        android:layout_toRightOf="@id/iv_store"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="2"
+            android:lines="2"
+            android:text="广东省深圳市罗湖区翠竹路"
+            android:textSize="@dimen/text_size_small_medium" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="0755-88888888"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size_micro" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="06:00-22:00"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size_micro" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="70dip"
+        android:layout_height="90dip"
+        android:layout_alignParentRight="true" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/icon_return" />
+
+        <TextView
+            android:id="@+id/tv_distence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:drawableLeft="@drawable/icon_location"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="0.98km"
+            android:textSize="@dimen/text_size_micro" />
+    </FrameLayout>
+
+</RelativeLayout><!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/item_store_info.xml -->

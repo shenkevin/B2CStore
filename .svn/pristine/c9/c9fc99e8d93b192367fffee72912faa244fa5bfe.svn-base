@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:state_pressed="true"  android:state_enabled="true" android:drawable="@drawable/down" />
+    <item android:state_pressed="false"  android:state_enabled="true" android:drawable="@drawable/nor" />
+    <item android:state_enabled="false" android:drawable="@drawable/notenabledgrey" />
+
+
+
+</selector><!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/drawable/shopping_bottom_button_bg.xml -->

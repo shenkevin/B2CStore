@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用优惠券"
+            android:textSize="@dimen/text_size_small_medium" />
+
+        <TextView
+            android:id="@+id/clip_Coupon_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="使用2张优惠券"
+            android:textSize="@dimen/text_size_small" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发票信息"
+            android:textSize="@dimen/text_size_small_medium" />
+
+        <TextView
+            android:id="@+id/distribution_mode_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="无"
+            android:textSize="@dimen/text_size_small" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品总价:"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_small_medium" />
+
+            <TextView
+                android:id="@+id/goods_total_prices_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="19999.00"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_small" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="优惠券:"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_small_medium" />
+
+            <TextView
+                android:id="@+id/discount_coupons_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="50.00"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_small" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="运费:"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_small_medium" />
+
+            <TextView
+                android:id="@+id/freight_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="0.00"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_small" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/actual_payment_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="15555"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dip"
+                android:layout_toLeftOf="@id/actual_payment_tv"
+                android:text="实付:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small_medium" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/order_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="2015-7-30 15:30"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_micro" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dip"
+                android:layout_toLeftOf="@id/order_time_tv"
+                android:text="下单时间:"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_micro" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/layout/indent_detail_footerview.xml -->

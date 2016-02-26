@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/the_title_layout"
+    android:layout_height="@dimen/title_height"
+    android:background="@color/title_background"
+    android:gravity="center_vertical" >
+
+
+    <ImageView
+		android:layout_alignParentLeft="true"
+        android:id="@+id/title_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      	android:layout_centerVertical="true"
+        android:src="@drawable/titleback_bg"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        android:contentDescription="@string/app_name"/>
+
+	<TextView
+		android:layout_centerHorizontal="true"
+		android:id="@+id/title_name"
+	    android:layout_width="wrap_content"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+		android:textStyle="bold"
+		android:layout_centerVertical="true"
+	    android:textColor="@color/white"
+	    android:textSize="@dimen/title_size"
+		android:visibility="visible"
+	    />
+	<ImageView
+
+	    android:id="@+id/title_message"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/icon_mail"
+	    android:scaleType="fitXY"
+		android:layout_centerVertical="true"
+	      android:layout_marginRight="10dip"
+	    android:visibility="gone"
+		android:layout_toLeftOf="@+id/tv_filter"
+	    android:contentDescription="@string/app_name"/>
+
+
+	<cn.mstar.store.customviews.SquareTextView
+		android:layout_alignParentRight="true"
+	    android:id="@+id/tv_filter"
+	    android:layout_width="20dp"
+	    android:layout_height="match_parent"
+	    android:textColor="@color/white"
+	   	android:textSize="@dimen/text_size_small"
+		android:layout_centerVertical="true"
+	   	android:text="@string/filtrate"
+		android:layout_marginRight="15dp"
+	   	android:visibility="gone"
+	    />
+</RelativeLayout>
+<!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/title_layout.xml -->

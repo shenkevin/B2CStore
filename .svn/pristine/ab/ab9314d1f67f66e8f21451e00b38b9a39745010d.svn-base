@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/page_background"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <cn.mstar.store.ownee.views.OverscrollView2
+        android:id="@+id/overscroll_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:overScrollMode="always"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle" >
+
+            <LinearLayout
+                android:id="@+id/set_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/set"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/backColor" />
+
+            <LinearLayout
+                android:id="@+id/about_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/about"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/backColor" />
+
+            <LinearLayout
+                android:id="@+id/use_help_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/help"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/backColor" />
+
+            <LinearLayout
+                android:id="@+id/software_share_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/share"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/backColor" />
+
+            <LinearLayout
+                android:id="@+id/feekback_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/feedback"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/backColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/updata"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/backColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/news"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/backColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/jewelry_knowledge"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/backColor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/more_tab_height"
+                android:background="@drawable/more_tab_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/application"
+                    android:textSize="@dimen/text_size_small_medium" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/btn_expand_pressed" />
+            </LinearLayout>
+        </LinearLayout>
+  </cn.mstar.store.ownee.views.OverscrollView2>
+
+</LinearLayout><!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/layout/fragment_more.xml -->

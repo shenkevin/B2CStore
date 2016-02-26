@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MstarStoreAppcation</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- 引导页 -->
+    <string name="guide_button_text">立即体验</string>
+
+    <!-- 标题 -->
+    <string name="filtrate">筛选</string>
+    <string name="more_classify">更多分类</string>
+    <!-- Main -->
+    <string name="home">首页</string>
+    <string name="custom">定制</string>
+    <string name="me">我的</string>
+    <string name="more">更多</string>
+    <string name="exit_app">再按一次退出程序</string>
+    <string name="no_network">网络未连接</string>
+
+    <!-- home -->
+    <string name="index_search_edit_hint">搜索范儿珠宝</string>
+
+    <!-- JazzyViewPager -->
+    <string-array name="jazzy_effects">
+        <item>Standard</item>
+        <item>Tablet</item>
+        <item>CubeIn</item>
+        <item>CubeOut</item>
+        <item>FlipVertical</item>
+        <item>FlipHorizontal</item>
+        <item>Stack</item>
+        <item>ZoomIn</item>
+        <item>ZoomOut</item>
+        <item>RotateUp</item>
+        <item>RotateDown</item>
+        <item>Accordion</item>
+    </string-array>
+    <!-- JazzyViewPager -->
+
+
+    <!-- me -->
+    <string name="goods_managment">我的订单</string>
+    <string name="reduction_ticket_activity_name">我的优惠券</string>
+    <string name="welcome_qianxi">欢迎来到千禧之星</string>
+    <string name="register">注册</string>
+    <string name="login">登录</string>
+
+    <!-- product_details -->
+    <string name="add_shopping_cart">加入购物车</string>
+    <string name="buy_now">立即购买</string>
+    <string name="free_shipping">免运费</string>
+    <string name="official_price">官方售价</string>
+    <string name="renminbi">¥</string>
+    <string name="product_details">产品详情</string>
+    <string name="no_norms">该产品无其他规格</string>
+    <string name="norm">规格</string>
+    <string name="select_norms">选择规格</string>
+    <!-- 搜索页 -->
+    <string name="search">搜索</string>
+    <string name="please_input">请输入</string>
+    <string name="clear_all">清除历史记录</string>
+    <string name="history_search">历史搜索</string>
+    <string name="hot_search">热门搜索</string>
+
+    <!-- 附近门店 -->
+    <string name="current_location">当前位置：</string>
+    <string name="locationing">正在定位，请稍等...</string>
+    <string name="near_store">附近门店</string>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="scan_add_device">扫描添加设备</string>
+    <string name="scan_fail">扫描失败</string>
+    <string name="bearing">方位</string>
+    <string name="line_distence">直线距离</string>
+    <!-- more -->
+    <string name="set">设置</string>
+    <string name="about">关于我们</string>
+    <string name="help">使用帮助</string>
+    <string name="share">软件分享</string>
+    <string name="feedback">意见反馈</string>
+    <string name="updata">软件更新</string>
+    <string name="news">最新资讯</string>
+    <string name="jewelry_knowledge">珠宝知识</string>
+    <string name="application">精品应用</string>
+
+    <!-- productList -->
+    <string name="sales_volume">销量</string>
+    <string name="price">价格</string>
+    <string name="news_product">新品</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="recent_updates">最近更新:</string>
+    <string name="pull_to_refresh_release_label">松开后刷新</string>
+    <string name="pull_to_refresh_footer_release_label">松开后加载</string>
+    <string name="pull_to_refresh_footer_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_refreshing_label">刷新中\u2026</string>
+    <string name="pull_to_refresh_footer_refreshing_label">加载中\u2026</string>
+    <string name="data_loaded">加载完成</string>
+    <string name="line_plan">线路规划</string>
+    <string name="line_navigation">直线导航</string>
+    <string name="bear_value">0.0</string>
+    <string name="bear_unit">D</string>
+    <string name="distence_value">0.00</string>
+    <string name="distence_unit">km</string>
+
+    <!-- 规格页 -->
+    <string name="select_commodity">选择商品</string>
+    <string name="please_select_norms">请选择规格</string>
+    <string name="number">数量</string>
+    <string name="stock">库存</string>
+    <string name="piece">件</string>
+
+    <!-- 确认订单页 -->
+    <string name="add_receives_an_address">添加收件地址</string>
+    <string name="recevier">收件人:</string>
+    <string name="phone">电话:</string>
+    <string name="recevier_address">收件地址:</string>
+    <string name="select_distribution_mode">选择配送方式</string>
+    <string name="online_pay">在线支付</string>
+    <string name="pay_on_delivery">货到付款</string>
+    <string name="confirm_indent">确认订单</string>
+    <string name="buy_number">购买数量</string>
+    <string name="total_price">合计:</string>
+    <string name="confirm">确认</string>
+    <string name="indent_post_successed">订单提交成功</string>
+
+    <!-- 支付 -->
+    <string name="unionpay_pay">银联支付</string>
+    <string name="zhifubao_pay">支付宝支付</string>
+    <string name="wechat_pay">微信支付</string>
+    <string name="caifutong_pay">财付通支付</string>
+    <string name="pos_pay">POS机支付</string>
+    <string name="confirm_pay">确认支付</string>
+    <string name="pay">支付</string>
+    <string name="pay_tips">*请您及时付款,以便订单尽快处理！在线支付金额:</string>
+    <!-- 管理收货地址 -->
+    <string name="manage_address">管理收货地址</string>
+    <string name="receiver_address">收货地址</string>
+    <string name="create_receiver_address">新建收货地址</string>
+    <string name="select_address">选择地址</string>
+    <string name="name">姓名:</string>
+    <string name="phone_number">手机号:</string>
+    <string name="current_address">所在地区:</string>
+    <string name="detail_address">详细地址:</string>
+    <string name="zip_code">邮政编码:</string>
+    <string name="save_set">保存设置</string>
+    <string name="set_success">设置成功</string>
+    <string name="set_fail">设置失败</string>
+    <string name="seting">设置中...</string>
+    <string name="deleteing">删除中...</string>
+    <string name="address">地址:</string>
+    <string name="default_address">默认地址</string>
+    <string name="set_default_address">设为默认地址</string>
+    <string name="delete">删除</string>
+    <string name="already_default_address">已是默认地址</string>
+    <string name="defalut">默认</string>
+    <!-- 产品列表页 -->
+    <string name="reset">重置</string>
+
+    <!--物流  -->
+    <string name="logistics_company">物流公司:</string>
+    <string name="waybill_number">运单单号:</string>
+    <string name="Order_time">下单时间:</string>
+
+    <!-- 订单详情 -->
+    <string name="indent_details">订单详情</string>
+    <string name="cancel_indent">取消订单</string>
+    <string name="delete_indent">删除订单</string>
+    <string name="application_returns">申请退货</string>
+    <string name="pay_now">立即支付</string>
+    <string name="confirm_receipt">确认收货</string>
+    <string name="comment_goods">商品评价</string>
+    <string name="purchase_again">再次购买</string>
+    <string name="contact_customer_cervice">联系客服</string>
+    <string name="payment">支付方式</string>
+    <string name="distribution_mode">配送方式</string>
+
+    <!-- 修改密码-->
+    <string name="new_password">新密码:</string>
+    <string name="confrim_password">再次确认:</string>
+    <string name="confrim_change">确认修改</string>
+    <string name="new_password_tips">请输入5-20位密码</string>
+    <string name="confrim_change_password_tips">请再次输入密码</string>
+
+    <!--忘记密码-->
+    <string name="forget_password">忘记密码</string>
+    <string name="please_input_phone_number">请输入手机号码</string>
+    <string name="next_step">下一步</string>
+    <string name="reset_password">重置密码</string>
+    <!-- ulrich modifications -->
+    <!-- activity login strings -->
+    <string name="user_picture">用户头像</string>
+    <string name="account_no">账号:</string>
+    <string name="username_ed_hint">"用户名 / 手机号码 / 邮箱</string>
+    <string name="password">密码:</string>
+    <string name="forgetpassword">忘记密码？</string>
+    <string name="no_account_registernow"><![CDATA[没有账户？ 立即注册 >>]]></string>
+    <string name="thirdpartlogin">用第三方账号登录</string>
+    <string name="phonenumber">手机号:</string>
+    <string name="register_phonenumber_hint">请输入手机号码</string>
+    <string name="register_tv_password">密\t\t\t码:</string>
+    <string name="register_password_hint">请输入5-20位的密码</string>
+    <string name="no_account_loginnow">已有账号？马上登录 >></string>
+    <string name="all_receipts">所有订单</string>
+    <string name="all_receipt">查看所有订单</string>
+    <string name="auth_code">验证码 :</string>
+    <string name="auth_code_hint">请输入验证码</string>
+    <string name="auth_code_get">获取验证码</string>
+    <string name="tv_register_username">用户名:</string>
+    <string name="register_username_hint">请输入6-20位的账号名</string>
+    <string name="phone_number_format_error">号码格式不对</string>
+    <string name="register_data_send_success">号码发送成功~开始对比</string>
+    <string name="register_error">注册消息不对。请检查再试</string>
+    <string name="user_less_size">用户名大于六位</string>
+    <string name="password_less_size">密码大于六位</string>
+    <string name="pass_user_same">密码不能和用户名一致</string>
+    <string name="yanzhengma_wrong">验证码不对</string>
+    <string name="R.string.number_format_wrong">号码格式不对</string>
+    <string name="title_activity_self_information">SelfInformationActivity</string>
+    <string name="myselfinfo_bluelink">如何升级?</string>
+    <string name="client_rank">会员等级</string>
+    <string name="client_point">现有积分</string>
+    <string name="client_name">用户名</string>
+    <string name="client_nickname">昵称</string>
+    <string name="client_mailadress">邮箱</string>
+    <string name="client_gender">性别</string>
+    <string name="client_adress_manager">地址管理</string>
+    <string name="change_password">修改密码</string>
+    <string name="modify_self_data">修改资料</string>
+    <string name="login_wrong">登录有错误</string>
+
+    <string-array name="selfinfo">
+        <item>用户名</item>
+        <item>昵称</item>
+        <item>邮箱</item>
+        <item>性别</item>
+    </string-array>
+
+    <string-array name="self_menu_hints">
+        <item>钻石会员</item>
+        <item>99999</item>
+        <item>13060552637</item>
+        <item>林佳明</item>
+        <item>ulrichabiguime@qq.com</item>
+        <item>男</item>
+        <item></item>
+        <item></item>
+    </string-array>
+    <string-array name="self_menu_blue_link">
+        <item>如何升级？</item>
+        <item>如何记录？</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+
+    <!-- good managements strings -->
+    <string-array name="goods_managment_1">
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>待取货</item>
+    </string-array>
+    <string-array name="goods_managment">
+        <item>全部</item>
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>待取货</item>
+    </string-array>
+
+    <string name="waitingforpay">待付款</string>
+    <string name="waitingforsending">待发货</string>
+    <string name="waitingforreceiving">待收货</string>
+    <string name="waitingforretrieve">待取货</string>
+
+    <!-- goods below -->
+    <string name="myself">我的</string>
+    <string name="allthegoods">所有订单</string>
+    <string name="everyday_attendance">每日签到</string>
+    <string name="favorites">我的收藏</string>
+    <string name="change_gift">礼品脱欢</string>
+    <string name="reductions">我的优惠券</string>
+    <string name="myshoppingcar">我的购物车</string>
+    <!-- below hints -->
+    <string name="allthegoods_hint">查看所有已购订单</string>
+    <string name="everyday_attendance_hint">每日签到赢大奖</string>
+    <string name="reduction_hint">3 张优惠券</string>
+    <string name="title_activity_goods_management">GoodsManagementActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="goods_all">全部</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="logout">退出登录</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="order_presentation">千禧之星 祖金金条黄金眼投资收藏结婚送礼物正品 百年好合</string>
+    <string name="order_item_rules1">规格:</string>
+    <string name="order_item_rules2">千足金</string>
+    <string name="order_item_rules3">2.4g</string>
+    <string name="yuan_char">¥</string>
+    <string name="transaction_done_ok">交易成功</string>
+    <string name="title_activity_my_favorite_managment">MyFavoriteManagmentActivity</string>
+    <string name="favorite_all_categories">全部分类</string>
+    <string name="inner_category_count">(232)</string>
+    <string name="all_favorite">全部分类</string>
+    <string name="myfavorite_title">我的收藏</string>
+    <string name="network_error">网络出现异常！\n请检查网络再试</string>
+    <string name="delete_confirmation">你确定想删掉这个记录吗？</string>
+    <string name="cancel">取消</string>
+    <string name="delete_error">删除失败：请检查您的网络</string>
+    <string name="delete_success">删除成功</string>
+    <string name="already_logged">用户已经在线了!</string>
+    <string name="register_success">注册成功! 即可登录</string>
+    <string name="adding_favorite_ok">收藏成功</string>
+    <string name="adding_favorite_error">收藏出错</string>
+    <string name="delete_favorite_ok">删掉成功</string>
+    <string name="delete_favorite_error">删掉出错</string>
+    <string name="title_activity_my_shopping_car">我的购物车</string>
+    <string name="network_state_error">网络连接失败</string>
+    <string name="network_state_error_reason">请检查您的手机是否连上网络</string>
+    <string name="network_state_error_try_connect">点击按钮尝试重新加载</string>
+    <string name="bt_network_try_connect">重新加载</string>
+    <string name="progress_bar_description">正在加载数据...</string>
+    <string name="no_result">没数据展示</string>
+    <string name="exchangepoints_activity">礼品脱换</string>
+
+    <string-array name="reduction_tab_items">
+        <item>全部</item>
+        <item>未使用</item>
+        <item>已使用</item>
+        <item>已过期</item>
+    </string-array>
+
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_exchange_points">ExchangePoints</string>
+    <string name="loading_data">正在加载数据\n请稍等</string>
+    <string name="choose_all">全选</string>
+    <string name="gotopay">去结算</string>
+    <string name="myself_message">我的信息</string>
+    <string name="add_shopping_cart_success">添加成功</string>
+    <string name="add_shopping_cart_failure">添加失败</string>
+    <string name="del_shopping_cart_success">删除成功</string>
+    <string name="del_shopping_cart_failure">删除失败</string>
+    <string name="add_shopping_cart_local_success">成功添加到本地</string>
+    <string name="outofstock">库存不足</string>
+    <string name="evaluated">已评价</string>
+    <string name="waitfor_evaluate">未评价</string>
+    <string name="error">出现错误、请稍后再试</string>
+    <string name="shoppingcart">购物车</string>
+    <string name="title_activity_request_goods_return">RequestGoodsReturnActivity</string>
+    <string name="select_product">选择产品</string>
+    <string name="select_product_message">收到产品15天之内可以申请退货</string>
+    <string name="contact_way">联系方式信息</string>
+    <string name="problem_description">问题描述</string>
+    <string name="request_sendback">申请退货</string>
+    <string name="sendnow">提交</string>
+    <string name="message_cannot_be_null">问题描述不能为空!</string>
+    <string name="choose_return_object">请选择退货产品</string>
+    <string name="welcome">欢迎您</string>
+    <string name="points">积分：</string>
+    <string name="returnrequest_ok">申请提交成功</string>
+    <string name="loadinformation_failure">获取用户信息失败！</string>
+    <string name="enter_text">请输入新的空间内容</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="information_change_failure">更改信息失败</string>
+    <string name="information_change_success">更改信息成功</string>
+    <string name="title_activity_return_goods_progress">ReturnGoodsProgressActivity</string>
+    <string name="already_payed">已付款</string>
+    <string name="manage_progress">处理进度</string>
+    <string name="order_id">退货订好：</string>
+    <string name="admisson_progress">审核中</string>
+    <string name="submit">提交</string>
+    <string name="finish">完成</string>
+    <string name="rembourse_money_progress">退款中</string>
+    <string name="sex_secret">保密</string>
+    <string name="enter_new">请输入新的</string>
+    <string name="good_send">已发货</string>
+    <string name="already_cancelled">已取消</string>
+    <string name="diamond_client">钻石会员</string>
+    <string name="product_comment">产品评价</string>
+    <string name="title_activity_upload">UploadActivity</string>
+    <string name="btnUploadToServer">上传图片</string>
+    <string name="upload_pic_success">上传图片成功!</string>
+    <string name="upload_pic_failure">上传图片失败!</string>
+    <string name="password_constraint">密码不能小于6位</string>
+    <string name="return_goods_progress">退货中</string>
+    <string name="all_good_return_state">产品都已在退货中了</string>
+    <string name="postname">收货人：</string>
+    <string name="adress">地址：</string>
+    <string name="e_ship_company">快递公司：</string>
+    <string name="e_ship_code">运单号码：</string>
+    <string name="tv_eship_resume">物流跟踪：</string>
+    <string name="product_name">产品名称：</string>
+    <string name="product_specials">产品规格：</string>
+    <string name="product_idnumber">产品单号：</string>
+    <string name="problem_description1">问题描述：</string>
+    <string name="confirm_receiving_good">确认收货成功</string>
+    <string name="confirm_receiving_good_error">确认收货失败</string>
+    <string name="categories">分类</string>
+
+</resources>

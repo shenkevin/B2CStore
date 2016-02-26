@@ -1,0 +1,394 @@
+package cn.mstar.store.ownee.activity;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import cn.mstar.store.R;
+import cn.mstar.store.activity.ChangePasswordActivity;
+import cn.mstar.store.activity.ForgetPasswordActivity;
+import cn.mstar.store.app.MyAction;
+import cn.mstar.store.app.MyApplication;
+import cn.mstar.store.ownee.entity.UserSelfInfoEntity;
+import cn.mstar.store.ownee.utils.Constants;
+import cn.mstar.store.ownee.utils.NewLink;
+import cn.mstar.store.ownee.utils.Utils;
+import cn.mstar.store.util.CustomToast;
+import cn.mstar.store.util.ImageLoadOptions;
+import cn.mstar.store.util.L;
+import cn.mstar.store.util.VolleyRequest;
+import cn.mstar.store.util.VolleyRequest.HttpStringRequsetCallBack;
+import cn.mstar.store.view.CircleImageView;
+import cn.mstar.store.view.LoadingDialog;
+
+public class SelfInformationActivity extends FragmentActivity {
+
+
+
+	LinearLayout lny_activity_selfinformation;
+	private LayoutInflater inflater;
+
+	private int LIGHT_LINE ,HEAVY_LINE;
+	private ImageView title_back;
+	private TextView tv_topbar_title;
+	private String[] hints, blue_links;
+	@Bind(R.id.iv_circle_profile_image) CircleImageView iv_head;
+	private MyApplication app;
+	private Gson gson;
+	private UserSelfInfoEntity info;
+	@Bind(R.id.pb_progressbar) LinearLayout loading;
+	@Bind(R.id.scrollView) ScrollView scrollview;
+	UserSelfInfoEntity initialInfo;
+
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_self_information);
+		ButterKnife.bind(this);
+		app = (MyApplication) getApplication();
+		initViews();
+		// loop up 8 other elements
+		loadData();
+		Utils.setNavigationBarColor(this, getResources().getColor(R.color.status_bar_color));
+		Utils.setStatusBarColor(this, getResources().getColor(R.color.status_bar_color));
+		// add the title
+
+		tv_topbar_title.setText(getString(R.string.modify_self_data));
+	}
+
+	LoadingDialog dialog;
+	private void loadData() {
+		String link = NewLink.REQUEST_USER_INFO+"&key="+Utils.getTokenKey(app);
+//		showDialog ();
+
+		VolleyRequest.GetCookieRequest(this, link, new HttpStringRequsetCallBack() {
+			@Override
+			public void onSuccess(String result) {
+				dismissDialog_();
+				gson = new Gson();
+				JsonElement elm = gson.fromJson(result, JsonElement.class).getAsJsonObject();
+				try {
+					JsonElement elm1 = gson.fromJson(result, JsonElement.class).getAsJsonObject().get("data");
+					info = gson.fromJson(elm1.getAsJsonObject(), UserSelfInfoEntity.class);
+					initialInfo = new UserSelfInfoEntity(info);
+//					CustomToast.makeToast(SelfInformationActivity.this, info.toString(), Toast.LENGTH_SHORT);
+					inflateData(info);
+				} catch (Exception e) {
+					e.printStackTrace();
+					CustomToast.makeToast(SelfInformationActivity.this, elm.getAsJsonObject().get("message").getAsString(), Toast.LENGTH_SHORT);
+					tv_topbar_title.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							finish();
+						}
+					}, 500);
+				}
+			}
+
+			@Override
+			public void onFail(String error) {
+				dismissDialog_();
+				CustomToast.makeToast(SelfInformationActivity.this, error, Toast.LENGTH_SHORT);
+				tv_topbar_title.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						finish();
+					}
+				}, 500);
+			}
+		});
+	}
+
+
+	private void inflateData(UserSelfInfoEntity info) {
+		ImageLoader.getInstance().displayImage(info.pic, iv_head, ImageLoadOptions.getOptions());
+		initValues(this);
+		initListeners();
+		addBottomViews(this);
+		loading.setVisibility(View.GONE);
+		scrollview.setVisibility(View.VISIBLE);
+	}
+
+	private void dismissDialog_() {
+		if (dialog != null) {
+			dialog.dismiss(); dialog.cancel(); dialog = null;
+		}
+	}
+
+	private void showDialog() {
+		dialog = new LoadingDialog(this);
+		dialog.show();
+	}
+
+	@Override
+	public void finish() {
+
+		/*send the informations first. */
+
+		// when ok. toast and get back.
+
+
+
+		super.finish();
+		overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+	}
+
+	private void initListeners() {
+
+		title_back.setVisibility(View.VISIBLE);
+		title_back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+	}
+
+	private void initValues(Context mContext) {
+
+		LIGHT_LINE  = Utils.convertPxtoDip(1, mContext);
+		HEAVY_LINE = Utils.convertPxtoDip(15, mContext);
+		hints = getResources().getStringArray(R.array.selfinfo);
+		blue_links = getResources().getStringArray(R.array.self_menu_blue_link);
+	}
+	private void addBottomViews(Context mContext) {
+
+		// add bottom views
+		for ( int i = 0; i < 8; i++) {
+
+			// inflate it first
+			if (inflater == null)
+				inflater = LayoutInflater.from(mContext);
+			View inf_rel = inflater.inflate(R.layout.activity_self_information_item, null);
+			//            View inf_rel = inflater.inflate(R.layout.me_goods_below_menus, null);
+			// get the views.
+			LinearLayout.LayoutParams params =
+					new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+			final TextView tv_title = (TextView) inf_rel.findViewById(R.id.tv_menu_title);
+			final TextView tv_openning_hint = (TextView) inf_rel.findViewById(R.id.tv_expand_hint);
+			TextView tv_blue_link = (TextView) inf_rel.findViewById(R.id.tv_bluelink);
+			ImageView iv = (ImageView) inf_rel.findViewById(R.id.iv_btn_expand_pressed);
+			tv_openning_hint.setVisibility(View.VISIBLE);
+			//            iv.setVisibility(View.GONE);
+			//            tv_title.setVisibility(View.GONE);
+			tv_blue_link.setText(blue_links[i]);
+			switch (i) {
+				case 0:
+					params.topMargin = LIGHT_LINE;
+					tv_title.setText(getString(R.string.client_rank));
+
+					iv.setVisibility(View.GONE);
+					tv_blue_link.setText(blue_links[i]);
+					break;
+				case 1:
+					params.topMargin = LIGHT_LINE;
+					tv_title.setText(getString(R.string.client_point));
+					tv_openning_hint.setText(app.points+"");
+					iv.setVisibility(View.GONE);
+					break;
+				case 2:
+					params.topMargin = HEAVY_LINE;
+					tv_title.setText(getString(R.string.client_name));
+					tv_openning_hint.setText(info.uName);
+					iv.setVisibility(View.GONE);
+					/*inf_rel.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							buildResponsiveDialog(tv_openning_hint, hints[0]).show();
+						}
+					});*/
+					break;
+				case 3:
+					params.topMargin = LIGHT_LINE;
+					tv_title.setText(getString(R.string.client_nickname));
+					tv_openning_hint.setText(info.tName);
+					inf_rel.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							buildResponsiveDialog(tv_openning_hint, hints[1]).show();
+						}
+					});
+					break;
+				case 4:
+					params.topMargin = LIGHT_LINE;
+					tv_title.setText(getString(R.string.client_mailadress));
+					tv_openning_hint.setText(info.email);
+					inf_rel.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							buildResponsiveDialog(tv_openning_hint, hints[2]).show();
+						}
+					});
+					break;
+				case 5:
+					params.topMargin = LIGHT_LINE;
+					tv_title.setText(getString(R.string.client_gender));
+					tv_openning_hint.setText(info.sex.equals("0") ? getString(R.string.male) : getString(R.string.female));
+					break;
+				case 6:
+					params.topMargin = HEAVY_LINE;
+					tv_title.setText(getString(R.string.client_adress_manager));
+					tv_openning_hint.setVisibility(View.GONE);
+
+					break;
+				case 7:
+					params.topMargin = LIGHT_LINE;
+					params.bottomMargin = HEAVY_LINE;
+					tv_title.setText(getString(R.string.change_password));
+					inf_rel.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							Intent intent=new Intent(SelfInformationActivity.this, ChangePasswordActivity.class);
+							startActivity(intent);
+						}
+					});
+					tv_openning_hint.setVisibility(View.GONE);
+					break;
+			}
+			// i want to put them inside a linearlayout.
+			lny_activity_selfinformation.addView(inf_rel, params);
+		}
+	}
+
+	private void initViews() {
+
+		lny_activity_selfinformation = (LinearLayout) findViewById(R.id.lny_activity_selfinformation);
+		title_back = (ImageView) findViewById(R.id.title_back);
+		tv_topbar_title = (TextView) findViewById(R.id.title_name);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_self_information, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+
+		//noinspection SimplifiableIfStatement
+		if (id == R.id.action_settings) {
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	// logOut
+	public void logOut (View view) {
+
+		// clean the rep
+		Utils.cleanSharedPref(SelfInformationActivity.this);
+
+		// show the dialog...
+		dialog = new LoadingDialog(this, getString(R.string.pull_to_refresh_footer_refreshing_label));
+		dialog.show();
+		// log out.
+
+		VolleyRequest.Logout((MyApplication) getApplication(), new HttpStringRequsetCallBack() {
+			@Override
+			public void onSuccess(String result) {
+				// anyway, the mainactivty has to know that im no more dealing.
+				dialog.cancel();
+				dialog = null;
+				finish();
+			}
+
+			@Override
+			public void onFail(String error) {
+				dialog.cancel();
+				dialog = null;
+				finish();
+			}
+		});
+		// finish ()
+		// hide the dialog.
+		Intent data = new Intent ();
+		data.putExtra(Constants.UNLOGGED, true);
+		setResult(3, data);
+	}
+
+	public android.support.v7.app.AlertDialog.Builder buildResponsiveDialog (final TextView tv, final String title) {
+
+		final android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+		// set  a layout.
+		View innerView = getLayoutInflater().inflate(R.layout.custom_field_layout, null);
+		final EditText ed = (EditText) innerView.findViewById(R.id.ed);
+		builder.setView(innerView)
+
+				.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						String tmp = ed.getText().toString();
+						tv.setText(tmp);
+						// change it inside the userinfo.
+						switch (title) {
+							case "用户名":
+								info.uName = tmp;
+								break;
+							case "昵称":
+								info.tName = tmp;
+								break;
+							case "邮箱":
+								// check if email is correct.
+								info.email = tmp;
+								break;
+						}
+						updateUserInfo();
+					}
+				})
+				.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				})
+				.setTitle(title);
+		return builder;
+	}
+
+	private void updateUserInfo() {
+		if (!info.toString().equals(initialInfo.toString())) {
+			// send back info.
+			Intent intent = new Intent();
+			intent.putExtra("message", (new Gson()).toJson(info));
+			setResult(3, intent);
+			CustomToast.makeToast(SelfInformationActivity.this, info.toString(), Toast.LENGTH_SHORT);
+		}
+	}
+
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		MyApplication.requestQueue.cancelAll(this);
+		super.onDestroy();
+	}
+
+}

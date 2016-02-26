@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/icon_choice_down" android:state_checked="true"  />
+    <item android:drawable="@drawable/icon_choice_nor" android:state_checked="false" />
+
+</selector><!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/drawable/custom_checkedbox_design.xml -->

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linear_container_view"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:background="@color/white"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:textColor="@color/little_red"
+            android:id="@+id/tv_situation"
+            android:text="@string/waitingforpay"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/iv_del_order"
+            android:src="@drawable/icon_shopcart_delete"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <!-- there comes the divider -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="@color/transparent" />
+
+    <!-- here comes the listview content. -->
+   <!--     <cn.mstar.store.ownee.views.CustomListview
+            android:id="@+id/inner_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/inner_lny_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- there comes the listview divider -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="@color/transparent" />
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_height="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:layout_toLeftOf="@+id/lny_extrem_right"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/tv_total_count"
+                android:layout_width="wrap_content"
+                android:text="共 1 件商品"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/maBlack"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:textColor="@color/maBlack"
+                android:layout_width="wrap_content"
+                android:text="总计：¥1350"
+                android:id="@+id/tv_total_amount"
+                android:textSize="12sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lny_extrem_right"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:gravity="center"
+                android:background="@drawable/btn_myorder_unreceiv_nor"
+                android:id="@+id/tv_clients_users"
+                android:text="用品评论"/>
+
+            <TextView
+                android:id="@+id/tv_pay_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/little_red"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@drawable/btn_myorderunpay_down"
+                android:text="立即支付"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="visible"
+                android:background="@drawable/btn_myorder_unreceiv_nor"
+                android:id="@+id/tv_check_shipment"
+                android:text="查看物流"/>
+
+            <TextView
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:gravity="center"
+                android:background="@drawable/btn_myorder_unreceiv_nor"
+                android:id="@+id/tv_confirm_receiving"
+                android:text="确认收货"/>
+
+            <TextView
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:gravity="center"
+                android:background="@drawable/btn_myorder_unreceiv_nor"
+                android:id="@+id/tv_evaluate"
+                android:text="-"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout><!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/myorderitem_with_innerlist.xml -->

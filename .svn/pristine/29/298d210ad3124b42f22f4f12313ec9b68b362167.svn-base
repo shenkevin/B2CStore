@@ -1,0 +1,9 @@
+package cn.mstar.store.ownee.interfaces;
+
+
+public interface OnResultStatusListener {
+
+	public void success (String result);
+	public void failure (String error);
+	
+}

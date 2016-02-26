@@ -1,0 +1,10 @@
+package cn.mstar.store.ownee.interfaces;
+
+/**
+ * Created by UlrichAbiguime at Shenzhen.
+ */
+public interface OnTextChangedListener {
+
+    public void updateText (String string);
+
+}

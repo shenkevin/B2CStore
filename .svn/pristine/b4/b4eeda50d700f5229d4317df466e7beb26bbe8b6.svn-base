@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_checked="true" android:drawable="@drawable/hook_confirmorder"></item>
+    <item android:drawable="@drawable/whitebox"></item>
+
+</selector>
+<!-- From: file:/D:/StudioProjects/MstarStoreAppcation/app/src/main/res/drawable/checkbox_bg.xml -->

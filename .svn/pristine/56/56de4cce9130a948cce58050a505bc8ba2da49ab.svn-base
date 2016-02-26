@@ -1,0 +1,95 @@
+package cn.mstar.store.activity;
+import com.google.gson.Gson;
+import cn.mstar.store.R;
+import cn.mstar.store.ownee.entity.LoginEntity;
+import cn.mstar.store.ownee.utils.Constants;
+import cn.mstar.store.util.L;
+import cn.mstar.store.util.VolleyRequest;
+import cn.mstar.store.util.VolleyRequest.HttpStringRequsetCallBack;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+/**测试登录activity
+ * @author duwenjun 2015-7-22
+ *
+ */
+public class CeshiDengluActivity extends BaseActivity {
+  Button button;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_ceshi);
+		button=(Button) findViewById(R.id.shifoudenglu);
+		button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				VolleyRequest.GetCookieRequest(CeshiDengluActivity.this, Constants.IS_LOGGED_LINK, new HttpStringRequsetCallBack() {
+					
+					@Override
+					public void onSuccess(String result) {
+						// TODO Auto-generated method stub
+						L.e("验证已登录"+result);
+					}
+					
+					@Override
+					public void onFail(String error) {
+						// TODO Auto-generated method stub
+						L.e("验证未登录"+error);
+					}
+				});
+			}
+		
+		});
+		tryLogin( "duwenjun", "199081");
+	}
+
+	private void tryLogin(final String username, final String passwd) {
+		// TODO Auto-generated method stub
+		VolleyRequest.GetCookieRequest(this, Constants.LOGIN_CLEAN_ENTITY, new HttpStringRequsetCallBack() {
+			
+			@Override
+			public void onSuccess(String ok) {
+				// TODO Auto-generated method stub
+				LoginEntity clean_entity = null;
+			     
+	            clean_entity = (new Gson()).fromJson(ok, LoginEntity.class);
+	            
+	            VolleyRequest.PostCookieRequest(CeshiDengluActivity.this, Constants.LOGIN_ENTITY_LINK, fill_entity(clean_entity, username, passwd), new HttpStringRequsetCallBack() {
+					
+					@Override
+					public void onSuccess(String ok) {
+						// TODO Auto-generated method stub
+						L.e("登录:"+ok.toString());
+					}
+					
+					@Override
+					public void onFail(String no) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+			}
+			
+			@Override
+			public void onFail(String no) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
+    private String fill_entity(LoginEntity entity, String username, String passwd) {
+
+        String s = "";
+        entity.data.username = username;
+        entity.data.password = passwd;
+        s = (new Gson()).toJson(entity);
+        L.e(" --- fenzhuang "+s);
+        return s;
+    }
+}
+

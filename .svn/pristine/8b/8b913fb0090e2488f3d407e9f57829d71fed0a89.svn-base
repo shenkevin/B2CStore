@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dip"
+    android:background="@drawable/selecet_area_bg"
+    android:orientation="vertical" >
+    <TextView 
+        android:id="@+id/name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_medium"
+        />
+
+</LinearLayout>
+<!-- From: file:/D:/my_workspace/MstarStoreAppStudio/app/src/main/res/layout/item_select_area.xml -->

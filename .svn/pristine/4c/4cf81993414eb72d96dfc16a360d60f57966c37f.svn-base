@@ -1,0 +1,289 @@
+package cn.mstar.store.ownee.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.mstar.store.R;
+import cn.mstar.store.activity.ProductDetailsActivity;
+import cn.mstar.store.app.MyAction;
+import cn.mstar.store.ownee.activity.MyFavoriteManagmentActivity;
+import cn.mstar.store.ownee.entity.OrdersItem;
+import cn.mstar.store.ownee.utils.Utils;
+import cn.mstar.store.util.CustomToast;
+import cn.mstar.store.util.ImageLoadOptions;
+import cn.mstar.store.util.L;
+
+import static cn.mstar.store.ownee.entity.OrdersItem.*;
+
+/**
+ * Created by 1 on 2015/7/21.
+ */
+public class GoodsManagement_InnerAdapter extends BaseAdapter {
+
+
+    List<OrdersItem> data;
+    Context mContext;
+    LayoutInflater inf;
+    private int SCREEN_WIDTH = -1;
+
+    public GoodsManagement_InnerAdapter (Context context, List<OrdersItem> ordersItemList) {
+
+        mContext = context;
+        data = ordersItemList;
+        inf = LayoutInflater.from(mContext);
+        SCREEN_WIDTH = Utils.getScreenWidth(mContext);
+        L.d(mContext.getClass() + " ---- " + data.toString());
+    }
+
+    public void add(OrdersItem cheese) {
+        if (data == null) {
+            data = new ArrayList<>();
+        }
+        data.add(cheese);
+    }
+
+    public void addAll(List<OrdersItem> order_items) {
+        for (OrdersItem orderItem: order_items) {
+            if (data == null) {
+                data = new ArrayList<>();
+            }
+            data.add(orderItem);
+            notifyDataSetChanged();
+        }
+    }
+
+    public class OrderItemViewHolder {
+
+        public TextView total_count_pres, tv_confirm_receiving;
+        public TextView tv_evaluate;
+
+        public  OrderItemViewHolder () {
+        }
+
+        // imageviews
+        public ImageView iv_delete;
+        public ImageView iv_item_pic;
+        // textview
+        public TextView specialTitle;
+        public TextView tv_check_shipment;
+        public TextView tv_bottom_action_pay;
+        public TextView tv_situation;
+        public TextView tv_item_presentation;
+        public TextView   tv_unit_price,
+                tv_unit_count, tv_total_amount;
+        public ORDER_STATE state;
+    }
+
+
+    @Override
+    public int getCount() {
+        return data.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        try {
+            return data.get(position);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        View view;
+        OrderItemViewHolder vh;
+        if (convertView == null) {
+            view = inf.inflate(R.layout.myorderitem, null);
+            vh = initViewHolder (view);
+        } else {
+            view = convertView;
+            vh = (OrderItemViewHolder) view.getTag();
+        }
+
+        final OrdersItem item = (OrdersItem) getItem(position);
+
+        if (item != null) {
+
+            // get the state value of the order
+            vh.state = item.status;
+            // according to it, make the things right
+            shapeOutView(vh, item);
+        }/* else {
+            vh.state = ORDER_STATE.WAITING_FOR_PAY;
+            // according to it, make the things right
+            shapeOutView(vh);
+        }*/
+
+
+        // set up the max size of the middle textview.
+
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) vh.tv_item_presentation.getLayoutParams();
+        params.width = (SCREEN_WIDTH/2);
+        vh.tv_item_presentation.setLayoutParams(params);
+        vh.specialTitle.setLayoutParams(params);
+
+        // add listenerz.
+        vh.iv_item_pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityWithId(item.proId);
+            }
+        });
+
+        // we get 3 configurations.
+        view.setTag(vh);
+        return view;
+    }
+
+    protected void startActivityWithId(int proId) {
+
+        Intent intent = new Intent(mContext, ProductDetailsActivity.class);
+        intent.putExtra("proId", proId);
+        intent.setAction(MyAction.productListActivityAction);
+        mContext.startActivity(intent);
+    }
+
+    private void shapeOutView(OrderItemViewHolder vh) {
+         /*switch (vh.state) {
+            case ORDER_STATE.WAITING_FOR_PAY:
+        }*/
+
+        // show all
+        vh.iv_delete.setVisibility(View.GONE);
+        vh.tv_bottom_action_pay.setVisibility(View.GONE);
+        vh.specialTitle.setVisibility(View.GONE);
+        // often needed
+        vh.tv_situation.setVisibility(View.VISIBLE);
+        vh.iv_item_pic.setVisibility(View.VISIBLE);
+        vh.tv_item_presentation.setVisibility(View.VISIBLE);
+        vh.tv_unit_count.setVisibility(View.VISIBLE);
+        vh.tv_unit_price.setVisibility(View.VISIBLE);
+
+
+
+        if (vh.state == ORDER_STATE.TRANSACTION_DONE_OK){
+
+            vh.iv_delete.setVisibility(View.VISIBLE);
+            vh.tv_situation.setText(R.string.transaction_done_ok);
+        } else if (vh.state == ORDER_STATE.WAITING_FOR_PAY) {
+            vh.tv_situation.setText(R.string.waitingforpay);
+        } else  if (vh.state == ORDER_STATE.WAITING_FOR_RECEIVE) {
+            vh.tv_situation.setText(R.string.waitingforreceiving);
+        } else  if (vh.state == ORDER_STATE.WAITING_FOR_RETRIEVE) {
+            vh.tv_situation.setText(R.string.waitingforretrieve);
+        } else  if (vh.state == ORDER_STATE.WAITING_FOR_SENDING) {
+            vh.tv_situation.setText(R.string.waitingforsending);
+        }
+
+    }
+
+    private void shapeOutView(OrderItemViewHolder vh, OrdersItem d) {
+        // show all
+        vh.iv_delete.setVisibility(View.GONE);
+        vh.tv_bottom_action_pay.setVisibility(View.GONE);
+        vh.tv_check_shipment.setVisibility(View.GONE);
+        vh.specialTitle.setVisibility(View.GONE);
+        vh.tv_confirm_receiving.setVisibility(View.GONE);
+        vh.tv_confirm_receiving.setVisibility(View.GONE);
+
+        // often needed
+        vh.tv_situation.setVisibility(View.VISIBLE);
+        vh.iv_item_pic.setVisibility(View.VISIBLE);
+        vh.tv_item_presentation.setVisibility(View.VISIBLE);
+        vh.tv_unit_count.setVisibility(View.VISIBLE);
+        vh.tv_unit_price.setVisibility(View.VISIBLE);
+
+
+      /*  if (vh.state == ORDER_STATE.TRANSACTION_DONE_OK){
+
+            vh.iv_delete.setVisibility(View.VISIBLE);
+            vh.tv_situation.setText(R.string.transaction_done_ok);
+        }*/ if (vh.state == ORDER_STATE.WAITING_FOR_PAY) {
+
+            vh.tv_situation.setText(R.string.waitingforpay);
+            vh.tv_bottom_action_pay.setVisibility(View.VISIBLE);
+        } else  if (vh.state == ORDER_STATE.WAITING_FOR_RECEIVE) {
+            vh.tv_situation.setText(R.string.waitingforreceiving);
+            vh.tv_check_shipment.setVisibility(View.VISIBLE);
+        } else  if (vh.state == ORDER_STATE.WAITING_FOR_RETRIEVE) {
+            vh.tv_situation.setText(R.string.waitingforretrieve);
+        } else  if (vh.state == ORDER_STATE.WAITING_FOR_SENDING) {
+            vh.tv_situation.setText(R.string.waitingforsending);
+        } else if (vh.state == ORDER_STATE.CONFIRM_RECEIVE) {
+
+            vh.iv_delete.setVisibility(View.VISIBLE);
+            vh.tv_situation.setText(R.string.transaction_done_ok);
+            vh.tv_confirm_receiving.setVisibility(View.VISIBLE);
+            vh.tv_confirm_receiving.setVisibility(View.VISIBLE);
+            if (d.evaluate == 0) {
+                // 未评价
+                vh.tv_confirm_receiving.setText(mContext.getString(R.string.waitfor_evaluate));
+
+            } else if (d.evaluate == 1) {
+                // 已经评价
+                vh.tv_confirm_receiving.setText(mContext.getString(R.string.evaluated));
+                // make it clickable.
+            }
+        }
+
+
+        if (!"".equals(d.specialTitle)) {
+            vh.specialTitle.setText(d.specialTitle);
+            vh.specialTitle.setVisibility(View.VISIBLE);
+        }
+
+        //
+        vh.tv_item_presentation.setText(d.name);
+        vh.tv_total_amount.setText("总计："+mContext.getString(R.string.yuan_char)+String.valueOf(d.totalPrice));
+        vh.tv_unit_price.setText(String.valueOf(d.price));
+        L.d("XXX UUU ",d.toString());
+        vh.tv_unit_count.setText(String.valueOf(d.count));
+        vh.total_count_pres.setText("共 "+d.count+" 件商品");
+//        ImageLoader.getInstance().displayImage(product.getImageUrl(), viewHolder.productIV, ImageLoadOptions.getOptions());
+        ImageLoader.getInstance().displayImage(d.pic, vh.iv_item_pic, ImageLoadOptions.getOptions());
+    }
+
+    public GoodsManagement_InnerAdapter.OrderItemViewHolder initViewHolder(View view) {
+
+        GoodsManagement_InnerAdapter.OrderItemViewHolder vh = new OrderItemViewHolder();
+
+        //
+        vh.iv_delete = (ImageView) view.findViewById(R.id.iv_del_order);
+        vh.iv_item_pic = (ImageView) view.findViewById(R.id.iv_item_pic);
+
+        //
+        vh.specialTitle = (TextView) view.findViewById(R.id.specialTitle);
+        vh.tv_check_shipment = (TextView) view.findViewById(R.id.tv_check_shipment);
+        vh.tv_bottom_action_pay = (TextView) view.findViewById(R.id.tv_pay_now);
+        vh.tv_situation = (TextView) view.findViewById(R.id.tv_situation);
+        vh.tv_item_presentation = (TextView) view.findViewById(R.id.tv_item_presentation);
+        vh.tv_total_amount = (TextView) view.findViewById(R.id.tv_total_amount);
+        vh.tv_unit_count = (TextView) view.findViewById(R.id.tv_unit_count);
+        vh.tv_unit_price = (TextView) view.findViewById(R.id.tv_unit_price);
+        vh.total_count_pres = (TextView) view.findViewById(R.id.tv_total_count);
+        vh.tv_confirm_receiving = (TextView) view.findViewById(R.id.tv_confirm_receiving);
+        vh.tv_evaluate = (TextView) view.findViewById(R.id.tv_evaluate);
+        return vh;
+    }
+
+}

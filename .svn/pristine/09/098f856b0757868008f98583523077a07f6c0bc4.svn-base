@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/use_coupon_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用优惠券"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_small_medium" />
+
+        <TextView
+            android:id="@+id/remain_coupon_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/btn_expand_pressed"
+            android:text="还剩2张优惠券"
+            android:textSize="@dimen/text_size_small" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
+
+        <CheckBox
+            android:id="@+id/is_need_invoice_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/cb_confirm_indent_bg"
+            android:text="是否需要发票"
+            android:textSize="@dimen/text_size_small_medium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
+
+        <CheckBox
+            android:id="@+id/is_use_integral_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/cb_confirm_indent_bg"
+            android:text="使用10000积分抵100元"
+            android:textSize="@dimen/text_size_small_medium" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tips_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="10dip"
+        android:text="*本单可获得2350积分"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_small" />
+
+</LinearLayout>

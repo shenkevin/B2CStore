@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <!-- there comes the divider -->
+
+
+    <!-- here comes the main content. -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+         <ImageView
+            android:id="@+id/iv_icon_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/transparent"
+            android:src="@drawable/icon_delete" />
+        
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/picture1_" />
+
+        <LinearLayout
+              android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_image"
+            android:orientation="vertical" >
+
+            <!-- give this boy a maximu size. -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="2"
+                android:id="@+id/tv_item_name"
+                android:text="@string/order_presentation"
+                android:textColor="@color/blacksmoke" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yuan_char"
+                    android:textColor="@color/little_red" />
+
+                <TextView
+                    android:id="@+id/tv_item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="4335"
+                    android:textColor="@color/little_red" />
+            </LinearLayout>
+
+          
+        </LinearLayout>
+
+       
+    </RelativeLayout>
+
+    <!-- there comes the divider -->
+
+</LinearLayout><!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/favorite_category_item.xml -->

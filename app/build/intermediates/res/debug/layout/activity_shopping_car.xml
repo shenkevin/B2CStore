@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <include
+        layout="@layout/title_layout" />
+
+    <ListView
+        android:layout_below="@+id/the_title_layout"
+        android:id="@+id/lv_shopping_car_items"
+        android:layout_width="match_parent"
+        android:paddingBottom="50dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:layout_height="wrap_content" />
+    <!-- but the all menu onto the bottom -->
+
+    <RelativeLayout
+        android:id="@+id/rel_shopping_car_bottom_action"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true" >
+
+        <!-- buttons and all the other stuff -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/page_background"
+            android:layout_alignParentTop="true"
+            />
+
+        <CheckBox
+            android:id="@+id/ck_checkall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/custom_checkedbox_design_all"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="8dp"
+            android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:text="@string/choose_all"
+            android:textColor="@color/blacksmoke" />
+
+        <!-- middle stuff -->
+        <LinearLayout
+            android:layout_toRightOf="@id/ck_checkall"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:layout_marginLeft="25dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="16sp"
+                android:text="@string/total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/little_red"
+                android:layout_width="wrap_content"
+                android:text="¥4343445"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <!-- button at the right -->
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/bt_go_pay"
+            android:text="@string/gotopay"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shopping_bottom_button_bg"
+            android:layout_height="match_parent" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/activity_shopping_car.xml -->

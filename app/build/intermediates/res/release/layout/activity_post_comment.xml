@@ -1,0 +1,201 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_background"
+    android:fitsSystemWindows="true"
+    tools:context="cn.mstar.store.ownee.activity.PostCommentActivity">
+
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@id/title_layout"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <!-- top view-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="10dip">
+                <ImageView
+                    android:id="@+id/product_img"
+                    android:layout_width="70dip"
+                    android:layout_height="70dip"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/picture1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginRight="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/product_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:lines="2"
+                            android:text="Bijoux de luxe"
+                            android:textSize="@dimen/text_size_small_medium" />
+
+                        <TextView
+                            android:id="@+id/product_norms"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:lines="1"
+                            android:text="Solides et brillants"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_small" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <!-- top view -->
+
+            <!--radio group-->
+            <LinearLayout
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_height="wrap_content">
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/ck_good"
+                        android:layout_width="wrap_content"
+                        android:button="@null"
+                        android:background="@drawable/icon_good"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <RadioButton
+                        android:id="@+id/ck_fair"
+                        android:layout_width="wrap_content"
+                        android:button="@null"
+                        android:background="@drawable/icon_fair"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <RadioButton
+                        android:id="@+id/ck_bad"
+                        android:layout_width="wrap_content"
+                        android:button="@null"
+                        android:background="@drawable/icon_bad"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content" />
+
+
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+
+            <!-- Relativelayout text area -->
+
+            <LinearLayout
+                android:minHeight="100dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="30dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/text_area_background"
+                    android:minHeight="200dp"
+                    android:padding="10dp"
+                    android:layout_height="match_parent">
+
+
+                    <EditText
+                        android:id="@+id/editext"
+                        android:layout_width="match_parent"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:textColor="@color/gray"
+                        android:layout_height="wrap_content"
+                        />
+
+
+                    <LinearLayout
+                        android:layout_below="@+id/editext"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/btn_camera"
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/btn_camera"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/bt_send_comment"
+                    android:layout_below="@+id/tv_forget_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/send_comment"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_login_background_go"
+                    android:textSize="15sp"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</RelativeLayout>
+<!-- From: file:/Volumes/Transcend/MstarStoreAppcationStudio/app/src/main/res/layout/activity_post_comment.xml -->

@@ -1,0 +1,49 @@
+package cn.mstar.store.ownee.fragments;
+
+import java.lang.reflect.Type;
+import java.util.List;
+
+import cn.mstar.store.ownee.adapter.GoodsManagement_InnerAdapter;
+import cn.mstar.store.ownee.entity.OrdersItem;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
+import android.view.View;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+public class GoodsListFragment extends ListFragment {
+
+
+	private static final java.lang.String DATA = "stringz";
+
+	public static Fragment getInstance(List<OrdersItem> data, String link) {
+
+		Fragment frg = new GoodsListFragment();
+		Bundle args = new Bundle ();
+		Gson gson = new Gson();
+		args.putString(DATA, gson.toJson(data));
+		frg.setArguments(args);
+		return frg;
+	}
+
+	@Override
+	public void onViewCreated(View view, Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onViewCreated(view, savedInstanceState);
+
+		// set the adapter with the got data...
+
+		// dont wanna make all this parcelable stuffs no... i'll just do it with null data 
+		// now.
+		String data = getArguments().getString(DATA);
+		Type typeOfDest = new TypeToken<List<OrdersItem>>() {}.getType();
+
+		Gson gson = new Gson();
+		GoodsManagement_InnerAdapter adapter = new GoodsManagement_InnerAdapter(getActivity(), (List<OrdersItem>) gson.fromJson(data, typeOfDest));
+		setListAdapter(adapter);
+	}
+
+
+}
